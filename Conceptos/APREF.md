@@ -61,6 +61,10 @@ Tiempo y espacio
 Esfuerzo humano
 Optimizable
 
+-------
+ACA va ale
+
+
 
 antes la eficiencia era solo tiempo de ejecucion y espacio de memoria utilizado.
 
