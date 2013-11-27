@@ -62,6 +62,10 @@ Esfuerzo humano
 Optimizable
 
 
+antes la eficiencia era solo tiempo de ejecucion y espacio de memoria utilizado.
+
+
+
 - **En la actualidad como se mide la eficiencia del software?
     Evoluciono este concepto.** 
 	
