@@ -6,6 +6,8 @@ Apref Conceptos:
 ## A- Criterios de evaluacion y evolucion de los lenguajes
 
 - **Indique los criterios para evaluar un lenguaje de programacion.**
+
+
 - **En la actualidad como se mide la eficiencia del software?
 Evoluciono este concepto.**
 - **Que significa que un lenguaje sea ortogonal?**
@@ -38,6 +40,14 @@ procesos. Comparelos por distintos criterios.**
 - **Sintaxis y semantica de un lenguaje. Defina que es cada concepto
 e indique cual es la manera formal o no formal que usan generalmente
 los lenguajes de  programacion.**
+
+*Syntax influences how programs are written by the programmer, read by
+other programmers, and parsed by the computer. Semantics determines
+how programs are composed by the programmer, understood by other
+programmers, and interpreted by the computer. Pragmatics influences
+how programmers are expected to design and implement programs in
+practice. Syntax is important, but semantics and pragmatics are more
+important still.*
 
 ## D- Sintaxis
 - **Defina y describa la utilidad de la sintaxis de un lenguaje**
