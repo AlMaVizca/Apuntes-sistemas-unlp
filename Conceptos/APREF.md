@@ -7,9 +7,70 @@ Apref Conceptos:
 
 - **Indique los criterios para evaluar un lenguaje de programacion.**
 
+Facil de escribir -> Legible -> Confiable
+
+Mantenible
+
+Eficiente
+
+
+*Facil de escribir*
+-------------------
+
+Es la medida de cuan facil resulta un lenguaje para contruir soluciones.
+
+   1. Simplicidad -> facil de capturar: entender y recordar.
+   2. Expresividad -> Concentrar la atencion en la resolucion del problema
+   3. Ortogonalidad -> El usuario comprende mejor si tiene un pequeño
+   número de primitivas y un conjunto consistente de reglas de combinación.
+   4. Soporte  de Abstraccion -> Concepto clave para manejar la
+   complejidad, abstracción de procesos y de datos.
+ 
+*Legible*
+---------
+
+Facil de leer a las personas (equipo)
+
+1. Semantica
+   2. Sintaxis
+   3. Definicion
+   4. Estructuras de datos
+   5. Estructuras de control
+
+*Confiable*
+-----------
+
+Correcto: cumple con las especificaciones
+Certificacion:
+Verificacion de programas: probar su correción
+
+Chequeo de tipos, Restricción de alias, Robusto
+
+*Mantenibilidad*
+----------------
+
+Modificabilidad: Facil para introducir cambios
+Factoreo: una sola vez y luego reusar
+Localidad: El efecto de una caracteristica se restringe a una porción
+local del programa
+
+*Eficiencia*
+------------
+
+Tiempo y espacio
+Esfuerzo humano
+Optimizable
+
 
 - **En la actualidad como se mide la eficiencia del software?
-Evoluciono este concepto.**
+    Evoluciono este concepto.** 
+	
+	Pag 13 libro ghezzi..
+	
+	antes se usaba solamente el tiempo de ejecucion y el espacio
+	utilizado, aora tambien se tiene en cuenta el esfuerzo de
+	mantenimiento y productividad
+	
 - **Que significa que un lenguaje sea ortogonal?**
 - **Construya ejemplos de cada uno de los criterios** 	
 - **Indique cuales fueron los motivos que a su juicio condujeron a
