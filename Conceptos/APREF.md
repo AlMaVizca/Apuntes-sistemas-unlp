@@ -61,6 +61,10 @@ Tiempo y espacio
 Esfuerzo humano
 Optimizable
 
+-------
+ACA va ale
+
+
 
 - **En la actualidad como se mide la eficiencia del software?
     Evoluciono este concepto.** 
