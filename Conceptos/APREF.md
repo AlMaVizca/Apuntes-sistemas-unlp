@@ -17,6 +17,22 @@ Eficiente
 *Facil de escribir*
 -------------------
 
+En la decada del '70 se focalizaba en escribir código, y del '70 en
+adelante el mantenimiento del software fue reconocido como una parte
+importante del ciclo de vida, particularmente en terminos de costo.
+
+Cuan facil es mantener un programa es determinado por la facilidad de
+lectura y esto refleja una caracteristica de calidad en los programas
+y en los lenguajes de programacion.
+
+- Simplicidad 
+   - muchas componentes de construcción
+   - muchas formas de hacer lo mismo
+   - polimorfismo
+- Ortgonalidad
+   - Algol'68 extremadamente ortogonal
+
+
 Es la medida de cuan facil resulta un lenguaje para contruir soluciones.
 
    1. Simplicidad -> facil de capturar: entender y recordar.
@@ -25,13 +41,12 @@ Es la medida de cuan facil resulta un lenguaje para contruir soluciones.
    número de primitivas y un conjunto consistente de reglas de combinación.
    4. Soporte  de Abstraccion -> Concepto clave para manejar la
    complejidad, abstracción de procesos y de datos.
- 
+
 *Legible*
 ---------
 
-Facil de leer a las personas (equipo)
 
-1. Semantica
+   1. Semantica
    2. Sintaxis
    3. Definicion
    4. Estructuras de datos
@@ -61,26 +76,31 @@ Tiempo y espacio
 Esfuerzo humano
 Optimizable
 
--------
-ACA va ale
-
-
-
-antes la eficiencia era solo tiempo de ejecucion y espacio de memoria utilizado.
-
-
 
 - **En la actualidad como se mide la eficiencia del software?
     Evoluciono este concepto.** 
 	
-	Pag 13 libro ghezzi..
+(Pag 13 Ghezzi)
 	
-	antes se usaba solamente el tiempo de ejecucion y el espacio
-	utilizado, aora tambien se tiene en cuenta el esfuerzo de
-	mantenimiento y productividad
-	
+La eficiencia del software según ghezzi se mide teniendo en cuenta la
+velocidad de ejecucion, el tiempo utilizado y el esfuerzo utilizado (productividad).
+
+Es decir que el concepto cambio, anteriormente solo era considerado el
+espacio ocupado y la velocidad de ejecucion. Ahora no tien eque
+dejarse de lado el esfuerzo requerido en la produccion de software y
+en el mantenimiendo del mismo.
+
+
 - **Que significa que un lenguaje sea ortogonal?**
+
+Significa que un conjunto relativamente pequeño de constructores
+primitivos pueden ser combinados para construir el flujo y las
+estructuras de datos de todo el lenguaje.
+
 - **Construya ejemplos de cada uno de los criterios** 	
+
+
+
 - **Indique cuales fueron los motivos que a su juicio condujeron a
 la evolucion historica de los lenguajes de programacion**
 - **Describa la evolucion de los lenguajes de programacion en cuanto a su Sistema de Tipos.**
