@@ -99,12 +99,16 @@ estructuras de datos de todo el lenguaje.
 
 - **Construya ejemplos de cada uno de los criterios** 	
 
-
+PL/1 es un lenguaje confiable pero demasiado extenso(ni sencillo ni ortogonal)
 
 - **Indique cuales fueron los motivos que a su juicio condujeron a
 la evolucion historica de los lenguajes de programacion**
 - **Describa la evolucion de los lenguajes de programacion en cuanto a su Sistema de Tipos.**
 - **Describa la rama de la evolucion de los lenguajes que condujo al Paradigma de Objetos.**		
+Miranda, ML
+
+SIMULA 67, C++ CLU, SMALLTALK Java Eiffel
+
 - **Desde el punto de vista de la evolucion de los lenguajes, defina los objetivos, caracteristicas y aportes de Ada**
 - **Segun su criterio: Cuales fueron los lenguajes que mas
 aportaron a la evolucion de los lenguajes. Por que?**
@@ -138,24 +142,44 @@ how programmers are expected to design and implement programs in
 practice. Syntax is important, but semantics and pragmatics are more
 important still.*
 
+*The syntax rules of the language state how to form expressions, statements, and programs that look right.*
+*The semantic rules of the language tell us how to build meaningful expressions, statements and programs*
+
+
 ## D- Sintaxis
 - **Defina y describa la utilidad de la sintaxis de un lenguaje**
-*utilidad de componer instrucciones*
+
+**Definición:**: Conjuto de reglas que definen como componer letras, digitos y otros caracteres para formar los programas 
+
+
+**utilidad:**  de componer instrucciones*
 Es un protocolo para poder escribir en un leguaje
 
 - **Diferencie: Reglas lexicas y  reglas sintacticas.**
 
-*Reglas lexicas:* componer las palabras del alfabeto
-*Reglas sintacticas:* componer 
+*Reglas lexicas:* Definen el conjunto de caracteres que componen el alfabeto del lenguaje y la manera en la que los caracteres pueden ser combinados para formar palabras
+*Reglas sintacticas:* Conjunto de reglas que define como formar expresiones y sentencias
 
 - **Sintaxis abstracta y sintaxis concreta. Ejemplifique.** 
-Sintaxis abstracta: Estructura
-Sintaxis concreta: forma de escribir en el lenguaje concreto
+*Sintaxis abstracta:* Hace referencia a la forma en la que se compone una expresion
+*Sintaxis concreta:* Especificamente como se escribe la expresion en un lenguaje concreto
 
+   - **Abstracta**
+      While <condicion> <sentenciase>
+   - **Concreta**
+      while (i<100) {i++; tot+=1}
+	  while (i<100) do
+	    begin
+		i=i+1
+		tot=tot+1
+		end
+	  
 - **Que forma de definir la sintaxis conoce?, Comparelas.**
 *Lenguaje natural*
 *BNF y EBNF*
-*Diagrama de conboy?...*
+
+*Diagrama de conway*
+Representacion sintactica a traves de graficos
 
 - **Diferencias entre una gramatica libre de contexto y una gramatica
 sensible al contexto. Ejemplos**
