@@ -16,23 +16,86 @@ distintos tipos de semantica (estatica - dinamica - operacional)
 
 - **Defina y diferencia la semantica estatica de la semantica dinamica. Ejemplifique.** 		
 
-semantica estatica -> compilacion, comprobacion de tipo, operaciones 
-semantica dinamica -> Describe el efecto de ejecutar las diferentes
-construcciones en el lenguaje de programacion.
+La semantica estatica se encarga de realizar la comprobacion de tipos
+sobre las operaciones que se realizaran en el programa, mientras que
+la semantica dinamica describe el efecto de ejecutar las diferentes
+construcciones en el lenguaje
+
+Es decir:
+
+La semantica estática va a evaluar que en una condicion de if el valor
+de la condicion sea un valor de verdad (True or False).
+La semantica dinamica verifica que por ejemplo en el recorrido de un
+vector realizando la busqueda de un valor, no se excedan los limites
+del mismo. (no pedir el dato 14 si el vector tiene 10 elementos)
 
 
 ## F- Semantica Operacional
 - **Enumere los  elementos principales de la semantica operacional y
     describa dos de ellos.**
-	
+
+- **Variables** *La nocion de variable es una abstraccion que permite
+identificar celdas de memoria*
+
+Una variable tiene los siguientes atributos <nombre, alcance, tipo, l-valor, r-valor>
+
+   - **nombre:** string de caracteres que se utiliza para referenciar
+      la variable
+   - **alcance:** rango de instrucciones en el que se conoce el nombre
+   - **tipo:** valores y operaciones permitidas
+   - **l-valor:** lugar de memoria asociado con la variable(tiempo de
+       vida)
+   - **r-valor:** valor codificado almacenado en la ubicacion de la
+       variable
+	   
+- **Ligadura** *Especificacion exacta de la naturaleza de un atributo*
+
+En criollo podemos decir que la ligadura tiene que ver con el lugar
+donde se almacenan los atributos de una entidad.
+
+   - **estatica:** Si se establece antes de la ejecucion y no se puede cambiar
+   - **dinamica:** Se establece en el momento de la ejecución y puede
+       cambiarse de acuerdo a alguna regla especifica del lenguaje.
+	   
+- **Unidades** *Mecanismos que controlan el flujo de ejecución entre
+-rutinas con todas las ligaduras involucradas.*
+- **Modulos de ejecucion** *Es la representacion de una unidad en ejecucion*
+- **Parametros** 
+
+
+
 - **Para que nos sirve el procesador abstracto?**	
+
+El procesador abstracto nos sirve para estudiar la estructura de un
+lenguaje de programacionm por ejemplo para saber como las estructuras
+de datos son ordenadas y accedidas en un conjunto de instrucciones de
+maquinas.
+
+Es un procesador que cuenta con una memoriad de Código, otra de datos
+y un puntero a la instruccion que se esta ejecutando(ip)
+
+
 - **Describa el  concepto de ligadura y su funcion.** 	
+
+**Ligadura** *Especificacion exacta de la naturaleza de un atributo*
+
+En criollo podemos decir que la ligadura tiene que ver con el lugar
+donde se almacenan los atributos de una entidad.
+
+   - **estatica:** Si se establece antes de la ejecucion y no se puede cambiar
+   - **dinamica:** Se establece en el momento de la ejecución y puede
+       cambiarse de acuerdo a alguna regla especifica del lenguaje.
+
 
 ## G - Variables
 
 - **Enumere los atributos de las variables y describalos en general.**
 - **Clasifique las variables a acuerdo a cada uno de sus atributos y
     describa cada  una en forma general.**
+	
+	
+	
+	
 	
 - **Es lo mismo una variable global que una variable estatica? Que
     relacion tienen? Ejemplifique**
