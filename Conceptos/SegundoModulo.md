@@ -1,8 +1,8 @@
 # Segundo modulo
 
 ## E- Semantica
-- **Que formas de definir la Semantica de un lenguaje conoce? 
-Describalas brevemente.**
+### E-1. Que formas de definir la Semantica de un lenguaje conoce? 
+Describalas brevemente.
 
 Teniendo en cuenta que la semantica da significado a los programas
 sintacticamente correctos, no existe una forma formal. 
@@ -14,7 +14,7 @@ si se verifica durante su funcionamiento se llama dinamica.
 Gramatica con atributos (semantica estatica)
 distintos tipos de semantica (estatica - dinamica - operacional)
 
-- **Defina y diferencia la semantica estatica de la semantica dinamica. Ejemplifique.** 		
+### E-2. Defina y diferencia la semantica estatica de la semantica dinamica. Ejemplifique. 		
 
 La semantica estatica se encarga de realizar la comprobacion de nombres y tipos
 sobre las operaciones que se realizaran en el programa, mientras que
@@ -31,8 +31,8 @@ del mismo. (no pedir el dato 14 si el vector tiene 10 elementos)
 
 
 ## F- Semantica Operacional
-- **Enumere los  elementos principales de la semantica operacional y
-    describa dos de ellos.**
+### F-1. Enumere los  elementos principales de la semantica operacional y
+    describa dos de ellos.
 
 - **Variables** *La nocion de variable es una abstraccion que permite
 identificar celdas de memoria*
@@ -64,7 +64,7 @@ donde se almacenan los atributos de una entidad.
 
 
 
-- **Para que nos sirve el procesador abstracto?**	
+### F-2. ¿Para que nos sirve el procesador abstracto?	
 
 El procesador abstracto nos sirve para estudiar la estructura de un
 lenguaje de programacionm por ejemplo para saber como las estructuras
@@ -75,7 +75,7 @@ Es un procesador que cuenta con una memoriad de Código, otra de datos
 y un puntero a la instruccion que se esta ejecutando(ip)
 
 
-- **Describa el  concepto de ligadura y su funcion.** 	
+### F-3. Describa el  concepto de ligadura y su funcion. 	
 
 **Ligadura** *Especificacion exacta de la naturaleza de un atributo*
 
@@ -89,65 +89,65 @@ donde se almacenan los atributos de una entidad.
 
 ## G - Variables
 
-- **Enumere los atributos de las variables y describalos en general.**
-- **Clasifique las variables a acuerdo a cada uno de sus atributos y
+### G-1. Enumere los atributos de las variables y describalos en general.
+
+### G-2. Clasifique las variables a acuerdo a cada uno de sus atributos y
     describa cada  una en forma general.**
 	
+### G-3. ¿Es lo mismo una variable global que una variable estatica? Que
+    relacion tienen? Ejemplifique.
 	
+### G-4. Variables automaticas, semidinamicas y dinamicas. Indique
+    diferencias entre ellas. (respecto a su l-valor)Ejemplifique
 	
+### G-5. ¿Cuales son las diferencias semanticas entre variable estatica y
+    variable semiestatica?. (respecto a su l-valor)Ejemplifique.
 	
+### G-6. Cuales son las diferencias semanticas entre variable estatica y
+    constante. Ejemplifique.
 	
-- **Es lo mismo una variable global que una variable estatica? Que
-    relacion tienen? Ejemplifique**
+### G-7. ¿Por que se recomienda el uso de constantes? 		 
+
+### G-8. Describa la ligadura estatica y ligadura dinamica de dos atributos
+    de las variables. 	   
 	
-- **Variables automaticas, semidinamicas y dinamicas. Indique
-    diferencias entre ellas. Ejemplifique**
+### G-9. Defina, analice e indique ventajas y peligros de los
+    alias. Ejemplos. Indique si se pueden evitar.
 	
-- **Cuales son las diferencias semanticas entre variable estatica y
-    variable semiestatica?. Ejemplifique.**
-	
-- **Cuales son las diferencias semanticas entre variable estatica y
-    constante. Ejemplifique.**
-	
-- **Por que se recomienda el uso de constantes?** 		 
-- **Describa la ligadura estatica y ligadura dinamica de dos atributos
-    de las variables.** 	   
-	
-- **Defina, analice e indique ventajas y peligros de los
-    alias. Ejemplos. Indique si se pueden evitar.**
-	
-- **Construya al menos dos ejemplos en los que no coincidan los
-    atributos de alcance y tiempo de vida.**    
+### G-10. Construya al menos dos ejemplos en los que no coincidan los
+    atributos de alcance y tiempo de vida.    
 	
 
 ## H - Representacion en ejecucion
 
-- **En general, indique las caracteristicas de un lenguaje con un
+### H-1. En general, indique las caracteristicas de un lenguaje con un
     esquema estaticas, uno basado en pila y uno con esquema
-    dinamico.**
+    dinamico.
 	
-- **Los lenguajes actuales ?se encuadran en uno de estos esquemas?
-    Justifique.**
+### H-2. Los lenguajes actuales ?se encuadran en uno de estos esquemas?
+    Justifique.
 	
-- **Indique con que clase de variables se puede trabajar en cada
-    esquema.**
-- **Que informacion se guarda en el segmento de codigo de una
-    unidad?**
+### H-3. Indique con que clase de variables se puede trabajar en cada
+    esquema.
+    
+### H-4. Que informacion se guarda en el segmento de codigo de una
+    unidad?
 	
-- **Esquematice el registro de activacion de una unidad, indicando que
-    informacion  contiene.**
-- **Describa el ambiente de referencia de una unidad.**
-- **Justifique la existencia de un link dinamico en la semantica
+### H-5. Esquematice el registro de activacion de una unidad, indicando que
+    informacion  contiene.
+    
+### H-6. Describa el ambiente de referencia de una unidad.
+### H-7. Justifique la existencia de un link dinamico en la semantica
     operacional de un lenguaje. Si el lenguaje sigue la cadena
     estatica, para resolver las referencias no locales, ?es necesario
-    el link dinamico? Justifique**
+    el link dinamico? Justifique
 	
-- **?Que es una variable sensible a la historia? ?Todos los lenguajes
-    las proveen?.**
+### H-8. ¿Que es una variable sensible a la historia? ?Todos los lenguajes
+    las proveen?.
 	
-- **Marque diferencias semanticas y como se los implementa, a un
+### H-8. Marque diferencias semanticas y como se los implementa, a un
     arreglo seminidinamico y un arreglo dinamico. Que se hace en
-    compilacion y que en ejecucion?**
+    compilacion y que en ejecucion?
 	
-- **Cuando es indispensable que un objeto de dato sea almacenado en el
-    heap?  Ejemplos**
+### H-8. Cuando es indispensable que un objeto de dato sea almacenado en el
+    heap?  Ejemplos
