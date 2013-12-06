@@ -68,24 +68,39 @@ Un sistema de tipos agrupa los valores en tipos. Esto permite que los programado
 
 En los lenguages de *tipos estáticos*, las variables y las expresiones son fijas, ya sea expllícitamente definidas por el programador o inferidas por el compilador. En los lenguages de *tipos dinámicos*, los valores son fijos, pero las variables y las expresiones, no. Cada vez que se computa un operando, puede dar un valor de un tipo diferente. La mayoría de los lenguages de alto nivel son de tipos estáticos. En cambio, SMALLTALK, LISP, PROLOG, PERL y PYTHON) son de tipos dinámicos.
 
-equivalencia de tipos
-Principio de compleción de tipos
+*Equivalencia de tipos:*
+Por un lado, la *equivalencia de nombres* hace que cada tipo diferente se defina en un único lugar, lo cual puede resultar un inconveniente, pero ayuda a que el programa se pueda mantener con mayor facilidad (mayoría de los lenguajes). Por el otro, la *equivalencia estructural* hace que se puedan confundir los tipos que solo por casualidad son similares (ALGOL68).
 
-	- Tipos predefinidos
-	- Tipos definidos por el usuario
-	- Tad's  ->encapsulamiento y Ocultamiento?
-	- Clases
-		
+*Principio de compleción de tipos:*
+Establece que ninguna operación se debe restringir arbitrariamente en cuanto a los tipos de sus operandos. Decir que los operandos de la operación *and* son booleanos no es una restricción "arbitratia", porque es algo propio e inherente de esta operación. Pero sí es "arbitrario" decir que solo se pueden asignar los valores de cierto tipo, o que solo se pueden pasar como argumentos o devolver como resultados de una función los valores de cierto tipo.
+
+El diseño de software depende de la descomposición de programas grandes en unidades de programas. Y las unidades de programas más importantes con los paquetes, los tipos abstractos (TAD) y las clases.
+
+Los *paquetes* agrupan declaraciones de varios componentes.
+Los *TAD* tienen representaciones privadas, pero operaciones públicas.
+Las *clases* definen la estructura de familias de objetos, donde cada objeto es un grupo de variables privadas con operaciones públicas.
+
+Para que la interfaz del programa (API) sea sencinlla, un paquete suele deja visibles solamente algunos de sus componentes al código de la aplicación que lo utiliza. Estos componentes son *públicos*. Los demás componentes solo se ven dentro del paquete. Son *privados* y sirven para implementar los componentes públicos. Un paquete con componentes privados oculta información que es irrelevante para el código de la aplicación. Esta técnica que simplifica las API se denomina *encapsulación*.
+
+Una *clase* es un conjunto de objetos similares. Todos los objetos de una misma clase tienen los mismos componentes y las mismas operaciones. Los componentes se denominan *variables* de instancia o miembro, y las operaciones se denominan *constructores* y *métodos*. Un constructor es una operación que crea, y generalmente inicializa, un objeto nuevo en la clase. Un método es una operación que inspecciona o actualiza un objeto ya existente en la clase..
+
+
 - **Compare el paradigma OO y el desarrollo a traves de TADs.**
  
+El Paradigma OO es un paradigma de programación orientado a objetos que representa los conceptos como "objetos" que tienen 1- campos de datos (o sea, atributos que describen los objetos) y 2- prodecimientos relacionados conocidos como "métodos". Los objetos interactúan entre ellos para diseñar aplicaciones y programas de computación. (ver características y componentes arriba).
+
+Desarrollo a través de los datos abstractos (TAD): NO LO SÉ
+
 	 - OO aporta herencia
 	 
 - **Dentro de la evolucion historica de los lenguajes de programacion,
     describa los antecedentes del Paradigma de Objetos.**
 	
-	algol 60
-	simula
-	smalltalk
+	ALGOL 60: (1963) Lenguaje imperativo. Fue el primero que se diseñó para comunicar algoritmos y no solo para programar una computadora. Introdujo el concepto de estructura de bloques, mediante el cual se podían declarar variables y procedimientos donde fuera que se necesitaran en el programa (los bloques se pueden anidar). También fue el primero en soportar procedimientos recursivos. Considera las etiquetas como valores y las pasa como argumentos...
+	
+	SIMULA: (1979) Lenguaje orientado a objetos. Introdujo los conceptos de *objeto* y *clase*. Otro lenguaje de los ALGOL.
+	
+	SMALLTALK: (1989) Primer lenguaje puramente orientado a objetos, en el que programas enteros se desarrollaban a partir de clases. Tan puro que todos los valores son objetos. Incluso las órdenes se cuentan como objetos de la clase Bloque, y las estructuras de control como "si" (*if*) y "mientras" (*while*) son operaciones de esa clase. Muy económico en cuanto a conceptos, pero tiene una sintaxis extraña, tipos dinámicos y alcance dinámico (ver arriba).
 	
 
 # N - Paradigma Funcional
@@ -95,6 +110,9 @@ Principio de compleción de tipos
 	
 	- una entrada tiene siempre el mismo resultado
 	- *componentes* Funciones, variables
+
+*Paradigma funcional:*
+Se basa
 	
 - **Describa detalladamente que significan y como actuan la
     Currificacion y la transparencia referencial.**    
