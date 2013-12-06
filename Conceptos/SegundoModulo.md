@@ -166,9 +166,12 @@ Se puede evitar el uso de alias e incluso es una practica recomendada.
 - **Construya al menos dos ejemplos en los que no coincidan los
     atributos de alcance y tiempo de vida.**    
 	
-	
-ALEEEEEEE
----------
+- la variable estatica (respecto a su l-valor) el tiempo de vida es mayor que el alcance
+porque el valor perdura en memoria durante y despues de finalizado el programa
+
+- un puntero tiene menor tiempo de vida que el alcance 
+- los procedimientos / funciones tienen mas alcance que tiempo de vida
+
 
 ## H - Representacion en ejecucion
 
