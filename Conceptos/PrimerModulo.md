@@ -183,21 +183,31 @@ Simula -> dio origen a las clases / objetos
 PL1 -> dio origen a las excepciones.
 
 
-## B- Procesamiento de un lenguaje
+## B - Procesamiento de un lenguaje
 
-- **Que son la compilacion y la interpretacion? Defina y describa ambos
-procesos. Comparelos por distintos criterios.**
+### B-1. Que son la compilacion y la interpretacion? Defina y describa ambos procesos. Comparelos por distintos criterios.
+
  - Compilador:
-    - Analisis lexico
-    - Analisis Sintactico
-    - Analisis semantico(estatica)
-    - Traduccion
-    - Optimizacion
-    - Codigo objeto
+  	- Analisis lexico
+  	- Analisis Sintactico
+  	- Analisis semantico(estatica)
+  	- Traduccion
+  	- Optimizacion
+ 	 - Codigo objeto
  - Interpretacion
-    - Lectura de sentencia
-    - Interpretacion
-    - Ejecucion
+  	- Lectura de sentencia
+  	- Interpretacion
+  	- Ejecucion
+
+ - Intérprete vs Compilador
+	- El interprete lee e interpreta línea a línea <> El compilador lee un programa entero y lo convierte en código objeto
+	- El intérprete ejecuta siguiendo un orden lógico de ejecución <> El compilador sigue el 
+orden físico de las sentencias.
+	- Los programas compilados se ejecutan mucho mas rápidamente que los interpretados desde el 
+punto de vista del hardware aunque el proceso de compilación en si mismo lleva mas tiempo.
+	- En cuanto al espacio ocupado el intérprete ocupa menos espacio. Cada sentencia se deja en la 
+forma original; el compilador una sentencia ocupa cientos de sentencias de maquina.
+	- La detección de errores es más difícil para el intérprete que para el compilador.
 
 ## C- Sintaxis y semantica
 - **Sintaxis y semantica de un lenguaje. Defina que es cada concepto
