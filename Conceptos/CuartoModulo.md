@@ -87,14 +87,20 @@ Una *clase* es un conjunto de objetos similares. Todos los objetos de una misma 
 
 - **Compare el paradigma OO y el desarrollo a traves de TADs.**
  
+El Paradigma OO es un paradigma de programación orientado a objetos que representa los conceptos como "objetos" que tienen 1- campos de datos (o sea, atributos que describen los objetos) y 2- prodecimientos relacionados conocidos como "métodos". Los objetos interactúan entre ellos para diseñar aplicaciones y programas de computación. (ver características y componentes arriba).
+
+Desarrollo a través de los datos abstractos (TAD): NO LO SÉ
+
 	 - OO aporta herencia
 	 
 - **Dentro de la evolucion historica de los lenguajes de programacion,
     describa los antecedentes del Paradigma de Objetos.**
 	
-	algol 60
-	simula
-	smalltalk
+	ALGOL 60: (1963) Lenguaje imperativo. Fue el primero que se diseñó para comunicar algoritmos y no solo para programar una computadora. Introdujo el concepto de estructura de bloques, mediante el cual se podían declarar variables y procedimientos donde fuera que se necesitaran en el programa (los bloques se pueden anidar). También fue el primero en soportar procedimientos recursivos. Considera las etiquetas como valores y las pasa como argumentos...
+	
+	SIMULA: (1979) Lenguaje orientado a objetos. Introdujo los conceptos de *objeto* y *clase*. Otro lenguaje de los ALGOL.
+	
+	SMALLTALK: (1989) Primer lenguaje puramente orientado a objetos, en el que programas enteros se desarrollaban a partir de clases. Tan puro que todos los valores son objetos. Incluso las órdenes se cuentan como objetos de la clase Bloque, y las estructuras de control como "si" (*if*) y "mientras" (*while*) son operaciones de esa clase. Muy económico en cuanto a conceptos, pero tiene una sintaxis extraña, tipos dinámicos y alcance dinámico (ver arriba).
 	
 
 # N - Paradigma Funcional
@@ -104,6 +110,9 @@ Una *clase* es un conjunto de objetos similares. Todos los objetos de una misma 
 	
 	- una entrada tiene siempre el mismo resultado
 	- *componentes* Funciones, variables
+
+*Paradigma funcional:*
+Se basa
 	
 - **Describa detalladamente que significan y como actuan la
     Currificacion y la transparencia referencial.**    
