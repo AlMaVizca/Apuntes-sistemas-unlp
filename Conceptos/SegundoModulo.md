@@ -3,7 +3,14 @@
 ## E- Semantica
 - **Que formas de definir la Semantica de un lenguaje conoce? 
 Describalas brevemente.**
-No existe una forma formal.
+
+Teniendo en cuenta que la semantica da significado a los programas
+sintacticamente correctos, no existe una forma formal. 
+Existen distintos momentos en los que se evalua la semantica, la que
+se verifica antes de que el programa se ejecute, semantica estatica, y
+si se verifica durante su funcionamiento se llama dinamica.
+
+----
 Gramatica con atributos (semantica estatica)
 distintos tipos de semantica (estatica - dinamica - operacional)
 
