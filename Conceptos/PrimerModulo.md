@@ -115,16 +115,16 @@ aportaron a la evolucion de los lenguajes. Por que?**
 - **Que son la compilacion y la interpretacion? Defina y describa ambos
 procesos. Comparelos por distintos criterios.**
  - Compilador:
-  - Analisis lexico
-  - Analisis Sintactico
-  - Analisis semantico(estatica)
-  - Traduccion
-  - Optimizacion
-  - Codigo objeto
+    - Analisis lexico
+    - Analisis Sintactico
+    - Analisis semantico(estatica)
+    - Traduccion
+    - Optimizacion
+    - Codigo objeto
  - Interpretacion
-  - Lectura de sentencia
-  - Interpretacion
-  - Ejecucion
+    - Lectura de sentencia
+    - Interpretacion
+    - Ejecucion
 
 ## C- Sintaxis y semantica
 - **Sintaxis y semantica de un lenguaje. Defina que es cada concepto
