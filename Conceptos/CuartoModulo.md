@@ -68,14 +68,23 @@ Un sistema de tipos agrupa los valores en tipos. Esto permite que los programado
 
 En los lenguages de *tipos estáticos*, las variables y las expresiones son fijas, ya sea expllícitamente definidas por el programador o inferidas por el compilador. En los lenguages de *tipos dinámicos*, los valores son fijos, pero las variables y las expresiones, no. Cada vez que se computa un operando, puede dar un valor de un tipo diferente. La mayoría de los lenguages de alto nivel son de tipos estáticos. En cambio, SMALLTALK, LISP, PROLOG, PERL y PYTHON) son de tipos dinámicos.
 
-equivalencia de tipos
-Principio de compleción de tipos
+*Equivalencia de tipos:*
+Por un lado, la *equivalencia de nombres* hace que cada tipo diferente se defina en un único lugar, lo cual puede resultar un inconveniente, pero ayuda a que el programa se pueda mantener con mayor facilidad (mayoría de los lenguajes). Por el otro, la *equivalencia estructural* hace que se puedan confundir los tipos que solo por casualidad son similares (ALGOL68).
 
-	- Tipos predefinidos
-	- Tipos definidos por el usuario
-	- Tad's  ->encapsulamiento y Ocultamiento?
-	- Clases
-		
+*Principio de compleción de tipos:*
+Establece que ninguna operación se debe restringir arbitrariamente en cuanto a los tipos de sus operandos. Decir que los operandos de la operación *and* son booleanos no es una restricción "arbitratia", porque es algo propio e inherente de esta operación. Pero sí es "arbitrario" decir que solo se pueden asignar los valores de cierto tipo, o que solo se pueden pasar como argumentos o devolver como resultados de una función los valores de cierto tipo.
+
+El diseño de software depende de la descomposición de programas grandes en unidades de programas. Y las unidades de programas más importantes con los paquetes, los tipos abstractos (TAD) y las clases.
+
+Los *paquetes* agrupan declaraciones de varios componentes.
+Los *TAD* tienen representaciones privadas, pero operaciones públicas.
+Las *clases* definen la estructura de familias de objetos, donde cada objeto es un grupo de variables privadas con operaciones públicas.
+
+Para que la interfaz del programa (API) sea sencinlla, un paquete suele deja visibles solamente algunos de sus componentes al código de la aplicación que lo utiliza. Estos componentes son *públicos*. Los demás componentes solo se ven dentro del paquete. Son *privados* y sirven para implementar los componentes públicos. Un paquete con componentes privados oculta información que es irrelevante para el código de la aplicación. Esta técnica que simplifica las API se denomina *encapsulación*.
+
+Una *clase* es un conjunto de objetos similares. Todos los objetos de una misma clase tienen los mismos componentes y las mismas operaciones. Los componentes se denominan *variables* de instancia o miembro, y las operaciones se denominan *constructores* y *métodos*. Un constructor es una operación que crea, y generalmente inicializa, un objeto nuevo en la clase. Un método es una operación que inspecciona o actualiza un objeto ya existente en la clase..
+
+
 - **Compare el paradigma OO y el desarrollo a traves de TADs.**
  
 	 - OO aporta herencia
