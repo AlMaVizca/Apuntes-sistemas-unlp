@@ -16,7 +16,7 @@ distintos tipos de semantica (estatica - dinamica - operacional)
 
 - **Defina y diferencia la semantica estatica de la semantica dinamica. Ejemplifique.** 		
 
-La semantica estatica se encarga de realizar la comprobacion de tipos
+La semantica estatica se encarga de realizar la comprobacion de nombres y tipos
 sobre las operaciones que se realizaran en el programa, mientras que
 la semantica dinamica describe el efecto de ejecutar las diferentes
 construcciones en el lenguaje
