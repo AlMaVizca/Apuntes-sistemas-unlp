@@ -1,18 +1,20 @@
 # Primer modulo
 
-## A- Criterios de evaluacion y evolucion de los lenguajes
+# Primer modulo
 
-- **Indique los criterios para evaluar un lenguaje de programacion.**
+## A - Criterios de evaluacion y evolucion de los lenguajes
 
-Facil de escribir -> Legible -> Confiable
+### A-1. Indique los criterios para evaluar un lenguaje de programacion.
 
-Mantenible
+Criterios de evaluación:
 
-Eficiente
+ - Fácil de escribir -> Legible -> Confiable
+ - Mantenible
+ - Eficiente
 
-
-*Facil de escribir*
--------------------
+**Facil de escribir**
+	
+        Es la medida de cuán fácil resulta un lenguaje para construir soluciones.
 
 En la decada del '70 se focalizaba en escribir código, y del '70 en
 adelante el mantenimiento del software fue reconocido como una parte
@@ -29,8 +31,7 @@ y en los lenguajes de programacion.
 - Ortgonalidad
    - Algol'68 extremadamente ortogonal
 
-
-Es la medida de cuan facil resulta un lenguaje para contruir soluciones.
+Dentro de este criterio encontramos 4 características:
 
    1. Simplicidad -> facil de capturar: entender y recordar.
    2. Expresividad -> Concentrar la atencion en la resolucion del problema
@@ -39,76 +40,150 @@ Es la medida de cuan facil resulta un lenguaje para contruir soluciones.
    4. Soporte  de Abstraccion -> Concepto clave para manejar la
    complejidad, abstracción de procesos y de datos.
 
-*Legible*
----------
+
+**Legible**
+
+        Es la medida de cuan fácil de leer resulta para las personas.
+
+Elementos que afectan a la legibilidad:
+
+ 1. Semántica: Los Alias, efectos laterales y estructuras de datos pueden afectar la legibilidad
+ 2. Sintaxis:  Debe permitir comentarios. No debe permitir ambigüedades entre semántica y sintaxis.
+ 3. Definición: precisión en la definición de la sintaxis y la semántica. (ambigüedad - portabilidad - Definiciones formales)
+ 4. Estructuras de datos: programación estructurada
+ 5. Estructuras de control:  Facilidades para expresar los datos del problema
 
 
-   1. Semantica
-   2. Sintaxis
-   3. Definicion
-   4. Estructuras de datos
-   5. Estructuras de control
+**Confiable**
+     
+        Un lenguaje debe aportar mecanismos para comprobar que sus programas sean correcto. 
+        El objetivo es comprobar estáticamente la mayor cantidad de aspectos, 
+        ya que lo dinámico no certifica la correctitud del programa.
+ 
+Aspectos que afectan la confiabilidad de un programa:
+ 
+ 1. Correcto: cumple con las especificaciones
+ 2. Robustez:  permite manejo de errores (excepciones)
+ 3. Chequeo de tipos: estáticos y dinámicos
+ 4. Restricción de alias
 
-*Confiable*
------------
+**Mantenibilidad**
 
-Correcto: cumple con las especificaciones
-Certificacion:
-Verificacion de programas: probar su correción
+Aspectos que afectan la mantenibilidad:
 
-Chequeo de tipos, Restricción de alias, Robusto
-
-*Mantenibilidad*
-----------------
-
-Modificabilidad: Facil para introducir cambios
-Factoreo: una sola vez y luego reusar
-Localidad: El efecto de una caracteristica se restringe a una porción
-local del programa
-
-*Eficiencia*
-------------
-
-Tiempo y espacio
-Esfuerzo humano
-Optimizable
+ 1. Modificabilidad: Fácil para introducir cambios 
+ 2. Factoreo: poder reutilizar código
+ 3. Localidad: El efecto de una característica se restringe a una porción local del código
 
 
-- **En la actualidad como se mide la eficiencia del software?
-    Evoluciono este concepto.** 
+**Eficiencia**
+
+Aspectos que afectan la eficiencia:
+
+ 1. Tiempo de ejecución
+ 2. Memoria utilizada
+ 3. Espacio en disco
+ 4. Esfuerzo humano
+ 5. Optimizable
+
+
+
+###A-2. ¿En la actualidad como se mide la eficiencia del software? Evoluciono este concepto.
+
+La eficiencia del software se mide:
+
+- Originalmente por: 
+    - Memoria que ocupa 
+    - Tiempo de ejecución
+- Ahora se le agrego tambien:
+    - Esfuerzo humano
+    - La portabilidad
+    - La calidad (si no tiene errores)
+    - El reuso
+    - Interface
+    - Optimizable
+
 	
-(Pag 13 Ghezzi)
+
 	
-La eficiencia del software según ghezzi se mide teniendo en cuenta la
-velocidad de ejecucion, el tiempo utilizado y el esfuerzo utilizado (productividad).
+La eficiencia del software se mide teniendo en cuenta:(Pag 13 Ghezzi)
 
-Es decir que el concepto cambio, anteriormente solo era considerado el
-espacio ocupado y la velocidad de ejecucion. Ahora no tien eque
-dejarse de lado el esfuerzo requerido en la produccion de software y
-en el mantenimiendo del mismo.
+- La velocidad de ejecución
+- El tiempo utilizado
+- el esfuerzo utilizado (productividad).
+
+Es decir que el concepto cambio, anteriormente sólo era considerado el espacio ocupado y la velocidad de ejecución. Ahora no tiene que dejarse de lado el esfuerzo requerido en la producción de software y en el mantenimiento del mismo.
 
 
-- **Que significa que un lenguaje sea ortogonal?**
+
+
+### A-3. ¿Que significa que un lenguaje sea ortogonal?
 
 Significa que un conjunto relativamente pequeño de constructores
 primitivos pueden ser combinados para construir el flujo y las
 estructuras de datos de todo el lenguaje.
 
-- **Construya ejemplos de cada uno de los criterios** 	
+### A-4. Construya ejemplos de cada uno de los criterios 
 
-PL/1 es un lenguaje confiable pero demasiado extenso(ni sencillo ni ortogonal)
 
-- **Indique cuales fueron los motivos que a su juicio condujeron a
-la evolucion historica de los lenguajes de programacion**
-- **Describa la evolucion de los lenguajes de programacion en cuanto a su Sistema de Tipos.**
-- **Describa la rama de la evolucion de los lenguajes que condujo al Paradigma de Objetos.**		
+ - PL/1 es un lenguaje confiable pero demasiado extenso(ni sencillo ni ortogonal)
+ - Ejem de escritura: Que los nombres de las variables pueden ser escritos como una letra y números (A1, A2, A3...). Es facil de escribir pero difícil de leer.
+ - Ada no es un lenguaje simple: es robusto pero complejo. Abuso de operadores sobrecargados.
+ - Ada es un lenguaje expresivo.
+ - Ada no es un lenguaje ortogonal.
+ - Ada es un lenguaje legible: permite documentar  - brinda estructuras de control y de datos.
+ - Ada es un lenguaje confiable: brinda mecanismos de chequeo y manejo de excepciones.
+
+
+### A-5. Indique cuáles fueron los motivos que a su juicio condujeron a la evolución histórica de los lenguajes de programación
+
+Motivos que provocan la evolución de los lenguajes:
+
+ - Mantenibilidad: hacer lenguajes en los que cueste menos mantener los programas
+ - Eficiencia: hacer programas más eficientes
+ - Estandarización
+ - Abstracción: generar lenguajes de alto nivel para que sea más fácil programar.
+ - Complejidad de los problemas: obligó a que los lenguajes deban incorporar herramientas que permitan modelar problemas más complejos.
+ - Evolución de la tecnologia / necesidades
+
+
+
+### A-6. Describa la evolucion de los lenguajes de programacion en cuanto a su Sistema de Tipos.
+
+Evolución de tipos en orden de aparición:
+
+ - Tipos predefinidos: Fortran
+ - Tipos definidos por el usuario: Algol
+ - Tipos estructurados: Cobol
+ - TAD: Modula, ADA, C++
+ - Objetos / Clases: C++, Java, Smaltalk
+
+
+
+### A-7. Describa la rama de la evolucion de los lenguajes que condujo al Paradigma de Objetos.
+
 Miranda, ML
 
 SIMULA 67, C++ CLU, SMALLTALK Java Eiffel
 
-- **Desde el punto de vista de la evolucion de los lenguajes, defina los objetivos, caracteristicas y aportes de Ada**
-- **Segun su criterio: Cuales fueron los lenguajes que mas
-aportaron a la evolucion de los lenguajes. Por que?**
+
+### A-8.Desde el punto de vista de la evolucion de los lenguajes, defina los objetivos, caracteristicas y aportes de Ada
+
+Ada incorporó:
+ 
+ - Excepciones: mejoró lo que hizo PL1 (ada termina la ejecución después de una excepción mientras que PL1 retorna al punto siguiente:, siendo mas inseguro)
+ - Multitarea
+ - Concepto Tarea
+ - Abstracción de datos
+ - Unidades genéricas: packaging
+
+
+### A-9. ¿Segun su criterio: Cuales fueron los lenguajes que mas aportaron a la evolucion de los lenguajes. Por que?
+
+Simula -> dio origen a las clases / objetos
+
+PL1 -> dio origen a las excepciones.
+
 
 ## B- Procesamiento de un lenguaje
 
