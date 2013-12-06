@@ -11,9 +11,11 @@
 	 - polimorfismo
 	 - herencia
 
-	El Paradigma OO es un paradigma de programación orientado a objetos que representa los conceptos como "objetos" que tienen 1- campos de datos (o sea, atributos que describen los objetos) y 2- prodecimientos relacionados conocidos como "métodos". Los objetos interactúan entre ellos para diseñar aplicaciones y programas de computación.
 
-	Características principales de la programación OO:
+**Paradigma OO:**
+El Paradigma OO es un paradigma de programación orientado a objetos que representa los conceptos como "objetos" que tienen 1- campos de datos (o sea, atributos que describen los objetos) y 2- prodecimientos relacionados conocidos como "métodos". Los objetos interactúan entre ellos para diseñar aplicaciones y programas de computación.
+
+**Características principales de la programación OO:**
 
 *Abstracción:*
 Denota las características esenciales de un objeto, donde se capturan sus comportamientos. Cada objeto en el sistema sirve como modelo de un "agente" abstracto que puede realizar trabajo, informar y cambiar su estado, y "comunicarse" con otros objetos en el sistema sin revelar cómo se implementan estas características. Los procesos, las funciones o los métodos pueden también ser abstraídos, y, en ese caso, se requiere una variedad de técnicas para ampliar una abstracción. El proceso de abstracción permite seleccionar las características relevantes dentro de un conjunto e identificar comportamientos comunes para definir nuevos tipos de entidades en el mundo real. La abstracción es clave en el proceso de análisis y diseño orientado a objetos, ya que mediante ella podemos llegar a armar un conjunto de clases que permitan modelar la realidad o el problema que se quiere atacar.
@@ -36,7 +38,7 @@ Cada objeto está aislado del exterior, es un módulo natural, y cada tipo de ob
 *Recolección de basura:*
 La recolección de basura es la técnica por la cual el entorno de objetos se encarga de destruir automáticamente, y por tanto desvincular la memoria asociada, los objetos que hayan quedado sin ninguna referencia a ellos. Esto significa que el programador no debe preocuparse por la asignación o liberación de memoria, ya que el entorno la asignará al crear un nuevo objeto y la liberará cuando nadie lo esté usando. En la mayoría de los lenguajes híbridos que se extendieron para soportar el Paradigma de Programación Orientada a Objetos como C++ u Object Pascal, esta característica no existe y la memoria debe desasignarse expresamente.
 
-	Componentes principales de los lenguages de programación OO:
+**Componentes principales de los lenguages de programación OO:**
 	
 *Objetos:*
 Un objeto tiene una o más variables y cuenta con métodos que trabajan en él. Por lo general, las variables son privadas, y solo se puede acceder a ellas a través de los métodos de ese objeto. Los objetos proporcionan una manera natural de modelar entidades del mundo real y entidades sibernéticas como archivos, bases de datos, páginas web, componentes de la interfaz de usuarios, etc.
@@ -49,8 +51,9 @@ Una clase es una familia de objetos con variables y métodos similares. Una *sub
 - **?Como evoluciona el concepto de tipos a lo largo de la historia de
     los lenguajes? Hasta llegar al Paradigma OO.**
 
-	Los distintos valores que manipulan los programas de computación se agrupan en *tipos*. Por ejemplo, casi todos los lenguages disntinguen entre números enteros y reales, y entre booleanos y enteros. Un *tipo* es un conjunto de valores, pero no todos los conjuntos de valores forman necesariamente un tipo. Para que un conjunto de valores sea considerado un tipo, todas las operaciones relacionadas con ese tipo se deben comportar de la misma forma cuando se aplican a todos los valores del tipo. Es decir, que un tipo se caracteriza no solo por el conjunto de valores sino también por las operaciones que se aplican a esos valores.
-	Todos los lenguages de programación soportan *tipos primitivos* y *tipos compuestos*. Algunos también soportan *tipos recursivos*.
+Los distintos valores que manipulan los programas de computación se agrupan en *tipos*. Por ejemplo, casi todos los lenguages disntinguen entre números enteros y reales, y entre booleanos y enteros. Un *tipo* es un conjunto de valores, pero no todos los conjuntos de valores forman necesariamente un tipo. Para que un conjunto de valores sea considerado un tipo, todas las operaciones relacionadas con ese tipo se deben comportar de la misma forma cuando se aplican a todos los valores del tipo. Es decir, que un tipo se caracteriza no solo por el conjunto de valores sino también por las operaciones que se aplican a esos valores.
+	
+Todos los lenguages de programación soportan *tipos primitivos* y *tipos compuestos*. Algunos también soportan *tipos recursivos*.
 	
 *Tipo primitivo:*
 No se puede descomponer en valores más sencillos. Los valores ya son primitivos. Pueden ser incorporados (built-in), ya incluidos en el lenguage; definidos, se definen de cero, nuevos; o discretos, que tienen una relación directa con un rango de números enteros.
@@ -61,7 +64,7 @@ Está compuesto por valores más simples. Los valores son compuestos. Pueden ser
 *Tipo recursivo:*
 Se define según él mismo, como las listas y las cadenas. Una *lista* es una secuencia de valores, que puede tener cualquier cantidad de componentes, incluso cero (*lista vacía*). Las listas pueden ser homogéneas o heterogéneas en cuanto al tipo de sus componentes. Una *cadena* es una secuencia de caracteres, que al igual que las listas puede tener cualquier cantidad de componentes, incluso cero (*cadena vacía*).
 
-	Conceptos relacionados
+**Conceptos relacionados:**
 	
 *Sistemas de tipos:*
 Un sistema de tipos agrupa los valores en tipos. Esto permite que los programadores describan los datos con mayor eficacia y evita que los programas realicen operaciones sin sentido, un *error de tipo*. Los sistemas de tipos distinguen los lenguages de alto nivel de los lenguages de bajo nivel. En los de bajo nivel, los únicos tipos que hay son bytes y palabras, por lo cual no se pueden evitar las operaciones sin sentido.
@@ -74,7 +77,7 @@ Por un lado, la *equivalencia de nombres* hace que cada tipo diferente se defina
 *Principio de compleción de tipos:*
 Establece que ninguna operación se debe restringir arbitrariamente en cuanto a los tipos de sus operandos. Decir que los operandos de la operación *and* son booleanos no es una restricción "arbitratia", porque es algo propio e inherente de esta operación. Pero sí es "arbitrario" decir que solo se pueden asignar los valores de cierto tipo, o que solo se pueden pasar como argumentos o devolver como resultados de una función los valores de cierto tipo.
 
-El diseño de software depende de la descomposición de programas grandes en unidades de programas. Y las unidades de programas más importantes con los paquetes, los tipos abstractos (TAD) y las clases.
+El diseño de software depende de la descomposición de programas grandes en unidades de programas. Y las unidades de programas más importantes son los paquetes, los tipos abstractos (TAD) y las clases.
 
 Los *paquetes* agrupan declaraciones de varios componentes.
 Los *TAD* tienen representaciones privadas, pero operaciones públicas.
@@ -87,6 +90,7 @@ Una *clase* es un conjunto de objetos similares. Todos los objetos de una misma 
 
 - **Compare el paradigma OO y el desarrollo a traves de TADs.**
  
+**Paradigma OO:**
 El Paradigma OO es un paradigma de programación orientado a objetos que representa los conceptos como "objetos" que tienen 1- campos de datos (o sea, atributos que describen los objetos) y 2- prodecimientos relacionados conocidos como "métodos". Los objetos interactúan entre ellos para diseñar aplicaciones y programas de computación. (ver características y componentes arriba).
 
 Desarrollo a través de los datos abstractos (TAD): NO LO SÉ
@@ -111,8 +115,8 @@ Desarrollo a través de los datos abstractos (TAD): NO LO SÉ
 	- una entrada tiene siempre el mismo resultado
 	- *componentes* Funciones, variables
 
-*Paradigma funcional:*
-Se basa
+**Paradigma funcional:**
+Se basa en funciones sobre tipos, como listas y árboles. LISP fue el primer lenguaje funcional, que demostró que se pueden escribir programas sin recurrir a variables ni hacer uso de asignaciones. ML y HASKELL son lenguajes funcionales modernos. Tratan las funciones como valores comunes, que se pueden pasar como parámetros y devolver como resultados desde otras funciones. Además, incorporan sistemas de tipos avanzados, que nos permiten escribir funciones polimórficas, es decir, funciones que operan en datos de diferentes tipos. ML, al igual que LISP, es impuro, porque soporta variables y asignaciones. HASKELL, es un lenguaje funcional puro.
 	
 - **Describa detalladamente que significan y como actuan la
     Currificacion y la transparencia referencial.**    
@@ -137,6 +141,14 @@ Se basa
 	
 	termino, variable constante
 	
+**Paradigma lógico:**
+Se basa en un subconjunto de lógica de predicados. Los programas lógicos, en lugar de calcular valores de salida a partir de valores de entrada, infieren las relaciones entre los valores. PROLOG fue el primer lenguaje lógico, y sigue siendo el más popular. En su forma lógica pura es bastante ineficiente, por lo cual se lo ha ampliado con características lógicas adicionales para que resulte más usable.
+
+Los programas lógicos implementan relaciones (ya sean binarias, unitarias, terciarias, etc.), y por este motivo son de más alto nivel que los lenguajes imperativos o funcionales. Permiten aprovechar los beneficios de *backtracking* (intento fallido de comprobar una solicitud con respecto a una cláusula en particular, en el que la solicitud se comprueba, en cambio, con respecto a otra cláusula diferente), pero en la práctica también necesitan características impuras (cortar y entrada/salida).
+
+Los conceptos fundamentales de los programas lógicos son: afirmaciones, cláusulas de Horn y relaciones.
+
+
 - **Indique la filosofia de este paradigma, como se compone un
     programa, como se inicia la ejecucion, etc.** 	
 	
@@ -146,8 +158,24 @@ Se basa
 
 # P - Comparaciones
 
+Los lenguajes funcionales y lógicos tienen la contra de su incapacidad para modelar estados de manera natural, excepto por las extensiones más o menos ad hoc, que destruyen la claridad conceptual de estos lenguajes.
+
 - **Compare los paradigmas Imperativo y OO.**
 - **Compare los paradigmas Imperativo y Funcional.**
+
+**Paradigma imperativo:**
+Paradigma dominante desde los comienzos y hasta 1990. Se caracteriza por el uso de variables, órdenes y procedimientos. Luego fue reemplazado por los lenguajes OO.
+
+Se basa en órdenes que actualizan las variables que están almacenadas. La relación cercaba con la arquitectura de la computadora permite que los programas imperativos se implementen en forma eficiente.
+
+Con el paso del tiempo se agregó un concepto más a este tipo de paradigma: la abstracción de datos.
+
+Las *variables* y las *órdenes* son fundamentales porque permiten modelar entidades del mundo real con naturalidad a través de las variables, y procesos del mundo real a través de las órdenes que inspeccionan y actualizan las variables. Este paradigma incluye un amplio repertorio de expresiones: de bloques, condicionales, itertativas y recursivas. Sin embargo, los lenguajes imperativos más importantes (C y ADA) no son lo suficientemente buenos en este aspecto.
+
+Los *procedimientos* permiten generar abstracciones a partir de las órdenes. Se puede diferenciar entre el comportamiento observable de un procedimiento y el algoritmo (las órdenes) mediante el cual este procedimiento alcanza su comportamiento.
+
+La *abstracción de datos* no es compatible con lenguajes imperativos clásicos como C y PASCAL, pero resulta esencial en otros más modernos como ADA. Se puede diferenciar en las propiedades de un tipo abstracto y su representación; entre el comportamiento observable de las operaciones del tipo abstracto y los algoritmos mediante los cuales estas operaciones alcanzan su comportamiento.
+
 - **Compare los paradigmas Imperativo y Logico.**
 - **Describa a que se llama un lenguaje hibrido.**  
 - **Indique a forma de abordar la solucion de un problema en los

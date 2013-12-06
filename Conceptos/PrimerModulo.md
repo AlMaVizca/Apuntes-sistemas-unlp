@@ -162,7 +162,18 @@ Evolución de tipos en orden de aparición:
 
 Miranda, ML
 
-SIMULA 67, C++ CLU, SMALLTALK Java Eiffel
+  1. SIMULA 67: 
+    - Padre del paradigma OO. Lenguaje de simulacion de eventos. 
+    - Aporta concepto de Clase, objeto, jerarquia, herencia, binding dinamico.
+  2. SMALLTALK:
+    - Lenguaje puro Orientado a Objetos
+    - Aporta: encapsulamiento y abstracción. Polimorfismo y binding dinámico
+  3. C++:
+    - Aporte: manejo de clases y objetos al lenguaje C.
+  4. Java:
+    - Aporta: portabilidad e independencia de hardware.
+  
+   CLU,  Java Eiffel
 
 
 ### A-8.Desde el punto de vista de la evolucion de los lenguajes, defina los objetivos, caracteristicas y aportes de Ada
@@ -210,9 +221,24 @@ forma original; el compilador una sentencia ocupa cientos de sentencias de maqui
 	- La detección de errores es más difícil para el intérprete que para el compilador.
 
 ## C- Sintaxis y semantica
-- **Sintaxis y semantica de un lenguaje. Defina que es cada concepto
-e indique cual es la manera formal o no formal que usan generalmente
-los lenguajes de  programacion.**
+
+### C-1. Sintaxis y semantica de un lenguaje. Defina que es cada concepto e indique cual es la manera formal o no formal que usan generalmente los lenguajes de  programacion.
+
+ **Sintaxis**: conjunto de reglas que definen como componer letras, dígitos y otros 
+caracteres para formar los programas. 
+
+**Semantica**: conjunto de reglas para dar significado a los programas sintácticamente válidos.
+
+Formas de definir la sintaxis:
+
+ - Lenguaje natural (Ej.: Fortran)
+ - Utilizando la gramática libre de contexto
+ - Backus y Naun: BNF(Ej: Algol) 
+ - Diagramas Sintacticos: equivalentes a BNF pero mucho mas intuitivos.
+
+La utilidad de definir la sintaxis y la semántica de un lenguaje es determinar si un programa es válido y si lo es que significa.
+
+
 
 *Syntax influences how programs are written by the programmer, read by
 other programmers, and parsed by the computer. Semantics determines
@@ -227,47 +253,80 @@ important still.*
 
 
 ## D- Sintaxis
-- **Defina y describa la utilidad de la sintaxis de un lenguaje**
+
+### D-1. Defina y describa la utilidad de la sintaxis de un lenguaje
 
 **Definición:**: Conjuto de reglas que definen como componer letras, digitos y otros caracteres para formar los programas 
 
-
-**utilidad:**  de componer instrucciones*
+**Utilidad:**  de componer instrucciones*
 Es un protocolo para poder escribir en un leguaje
 
-- **Diferencie: Reglas lexicas y  reglas sintacticas.**
+Favorece:
 
-*Reglas lexicas:* Definen el conjunto de caracteres que componen el alfabeto del lenguaje y la manera en la que los caracteres pueden ser combinados para formar palabras
-*Reglas sintacticas:* Conjunto de reglas que define como formar expresiones y sentencias
+     - Legibilidad
+     - Verficabilidad
+     - Facil abstracción
+     - Auscencia de ambiguedad 
 
-- **Sintaxis abstracta y sintaxis concreta. Ejemplifique.** 
-*Sintaxis abstracta:* Hace referencia a la forma en la que se compone una expresion
-*Sintaxis concreta:* Especificamente como se escribe la expresion en un lenguaje concreto
+Elementos de la sintaxis:
+ 
+ 1. Alfabeto / Conjunto de caracteres
+ 2. Identificadores: cadena de caracteres
+ 3. Operadores
+ 4. Palabra clave y palabra reservada
+ 5. Comentarios
+
+
+### D-2. Diferencie: Reglas lexicas y  reglas sintacticas.
+
+**Reglas lexicas:** Definen el conjunto de caracteres que componen el alfabeto del lenguaje y la manera en la que los caracteres pueden ser combinados para formar palabras
+
+**Reglas sintacticas:** Conjunto de reglas que define como formar expresiones y sentencias
+
+### D-3. Sintaxis abstracta y sintaxis concreta. Ejemplifique.
+
+**Sintaxis abstracta:** Hace referencia a la forma en la que se compone una expresion
+
+**Sintaxis concreta:** Especificamente como se escribe la expresion en un lenguaje concreto
 
    - **Abstracta**
       While <condicion> <sentenciase>
    - **Concreta**
-      while (i<100) {i++; tot+=1}
-	  while (i<100) do
-	    begin
-		i=i+1
-		tot=tot+1
-		end
+
+         while (i<100) {i++; tot+=1}
+
+	     while (i<100) do
+	     begin
+	      i=i+1
+		  tot=tot+1
+		 end
 	  
-- **Que forma de definir la sintaxis conoce?, Comparelas.**
-*Lenguaje natural*
-*BNF y EBNF*
+### D-4. Que forma de definir la sintaxis conoce?, Comparelas.
 
-*Diagrama de conway*
-Representacion sintactica a traves de graficos
+Formas de definir la sintaxis:
 
-- **Diferencias entre una gramatica libre de contexto y una gramatica
-sensible al contexto. Ejemplos**
+ - Lenguaje natural (Ej.: Fortran)
+ - Utilizando la gramática libre de contexto
+ - Backus y Naun: BNF(Ej: Algol) 
+ - Diagramas Sintacticos: equivalentes a BNF pero mucho mas intuitivos (Diagrama de conway)
+
+
+
+### D-5. Diferencias entre una gramatica libre de contexto y una gramatica sensible al contexto. Ejemplos
+
+**Gramatica**: forma de definir la sintaxis de un lenguaje G = (N,T,S,P)
+
+Ejemplo: int a; int a;
+
+Una gramatica libre de contexto no analiza si un a se definio mas de una vez, en cambio una sensible al contexto si lo analiza.
+ 
 evaluacion de tipos en un condicional
 
-- **Cuando una gramatica es ambigua? Se puede solucionar?**
+### D-6. Cuando una gramatica es ambigua? Se puede solucionar?
 Cuando una gramatica puede generar dos arboles sintacticos
 
-- **Que son BNF y EBNF? Definalas y comp?relas.**
-Herramientas para escribir lenguajes
+### D-7. Que son BNF y EBNF? Definalas y comparelas.
+Herramientas para escribir gramaticas
 EBNF es la version extendida
+
+Consta basicamente de 4 elementos G= (N,T,S,P)
