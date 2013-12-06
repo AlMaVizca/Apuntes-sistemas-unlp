@@ -90,15 +90,51 @@ donde se almacenan los atributos de una entidad.
 ## G - Variables
 
 - **Enumere los atributos de las variables y describalos en general.**
+
+Una variable tiene los siguientes atributos <nombre, alcance, tipo, l-valor, r-valor>
+
+   - **nombre:** string de caracteres que se utiliza para referenciar
+      la variable
+   - **alcance:** rango de instrucciones en el que se conoce el nombre
+   - **tipo:** valores y operaciones permitidas
+   - **l-valor:** lugar de memoria asociado con la variable(tiempo de
+       vida)
+   - **r-valor:** valor codificado almacenado en la ubicacion de la
+       variable
+
+
 - **Clasifique las variables a acuerdo a cada uno de sus atributos y
     describa cada  una en forma general.**
 	
-	
-	
-	
-	
+   - **alcance:**
+      - **estaticas** la ligadura se realiza segun el orden del código
+          fuente,este tipo de alcance es el utilizado por ejemplo por C
+      - **dinamicas** la ligadura se realiza según el orden de
+          instrucciones que sigue el programa, este tipo de alcance es
+          el utilizado por APL, LISP (como los primeros que lo
+          definen) y snobol4
+   - **tipo:**
+      - **predefinidos:** son los tipos de datos que vienen definidos
+          en el lenguaje en uso
+	  - **definidos por el usuario:** son tipos de datos que define el usuario
+	  - **TADs:**
+	  - El tipado estatico hace referencia a la asignacion de un tipo
+        a la variable en momento de compilacion
+	  - El tipado dinamico hace referencia a la asignacion de tipo
+        durante la ejecucion de las insturcciones, esto hace que las
+        variables puedan ser polimorficas, es decir cambiar de tipo
+   - **l-value:** tiempo de vida
+      - **alocacion estatica**
+	  - **alocacion dinamica**
+	  - **alocacion automatica**
+	  
+Este ultimo hay que completarlo
+-------------------------------
+
 - **Es lo mismo una variable global que una variable estatica? Que
     relacion tienen? Ejemplifique**
+
+No son lo mismo, 
 	
 - **Variables automaticas, semidinamicas y dinamicas. Indique
     diferencias entre ellas. Ejemplifique**
@@ -116,9 +152,23 @@ donde se almacenan los atributos de una entidad.
 - **Defina, analice e indique ventajas y peligros de los
     alias. Ejemplos. Indique si se pueden evitar.**
 	
+Se llama alias cuando dos variables con el atributo nombre distinto
+tienen el mismo l-value, eso provoca que cuando una variable cambia,
+la otra también.
+El alias es util ya que permite por ejemplo compartir un dato
+identificando un nombre distinto segun el contexto de uso sin
+tener que incremetar el uso de espacio de memoria, esto tambien
+provoca que por ejemplo si se desaloca una variable, la otra queda
+apuntando a datos no concretos.
+
+Se puede evitar el uso de alias e incluso es una practica recomendada.
+	
 - **Construya al menos dos ejemplos en los que no coincidan los
     atributos de alcance y tiempo de vida.**    
 	
+	
+ALEEEEEEE
+---------
 
 ## H - Representacion en ejecucion
 
