@@ -87,6 +87,7 @@ Una *clase* es un conjunto de objetos similares. Todos los objetos de una misma 
 
 - **Compare el paradigma OO y el desarrollo a traves de TADs.**
  
+**Paradigma OO:**
 El Paradigma OO es un paradigma de programación orientado a objetos que representa los conceptos como "objetos" que tienen 1- campos de datos (o sea, atributos que describen los objetos) y 2- prodecimientos relacionados conocidos como "métodos". Los objetos interactúan entre ellos para diseñar aplicaciones y programas de computación. (ver características y componentes arriba).
 
 Desarrollo a través de los datos abstractos (TAD): NO LO SÉ
@@ -111,8 +112,8 @@ Desarrollo a través de los datos abstractos (TAD): NO LO SÉ
 	- una entrada tiene siempre el mismo resultado
 	- *componentes* Funciones, variables
 
-*Paradigma funcional:*
-Se basa
+**Paradigma funcional:**
+Se basa en funciones sobre tipos, como listas y árboles. LISP fue el primer lenguaje funcional, que demostró que se pueden escribir programas sin recurrir a variables ni hacer uso de asignaciones. ML y HASKELL son lenguajes funcionales modernos. Tratan las funciones como valores comunes, que se pueden pasar como parámetros y devolver como resultados desde otras funciones. Además, incorporan sistemas de tipos avanzados, que nos permiten escribir funciones polimórficas, es decir, funciones que operan en datos de diferentes tipos. ML, al igual que LISP, es impuro, porque soporta variables y asignaciones. HASKELL, es un lenguaje funcional puro.
 	
 - **Describa detalladamente que significan y como actuan la
     Currificacion y la transparencia referencial.**    
@@ -137,6 +138,14 @@ Se basa
 	
 	termino, variable constante
 	
+**Paradigma lógico:**
+Se basa en un subconjunto de lógica de predicados. Los programas lógicos, en lugar de calcular valores de salida a partir de valores de entrada, infieren las relaciones entre los valores. PROLOG fue el primer lenguaje lógico, y sigue siendo el más popular. En su forma lógica pura es bastante ineficiente, por lo cual se lo ha ampliado con características lógicas adicionales para que resulte más usable.
+
+Los programas lógicos implementan relaciones (ya sean binarias, unitarias, terciarias, etc.), y por este motivo son de más alto nivel que los lenguajes imperativos o funcionales. Permiten aprovechar los beneficios de *backtracking* (intento fallido de comprobar una solicitud con respecto a una cláusula en particular, en el que la solicitud se comprueba, en cambio, con respecto a otra cláusula diferente), pero en la práctica también necesitan características impuras (cortar y entrada/salida).
+
+Los conceptos fundamentales de los programas lógicos son: afirmaciones, cláusulas de Horn y relaciones.
+
+
 - **Indique la filosofia de este paradigma, como se compone un
     programa, como se inicia la ejecucion, etc.** 	
 	
@@ -146,8 +155,24 @@ Se basa
 
 # P - Comparaciones
 
+Los lenguajes funcionales y lógicos tienen la contra de su incapacidad para modelar estados de manera natural, excepto por las extensiones más o menos ad hoc, que destruyen la claridad conceptual de estos lenguajes.
+
 - **Compare los paradigmas Imperativo y OO.**
 - **Compare los paradigmas Imperativo y Funcional.**
+
+**Paradigma imperativo:**
+Paradigma dominante desde los comienzos y hasta 1990. Se caracteriza por el uso de variables, órdenes y procedimientos. Luego fue reemplazado por los lenguajes OO.
+
+Se basa en órdenes que actualizan las variables que están almacenadas. La relación cercaba con la arquitectura de la computadora permite que los programas imperativos se implementen en forma eficiente.
+
+Con el paso del tiempo se agregó un concepto más a este tipo de paradigma: la abstracción de datos.
+
+Las *variables* y las *órdenes* son fundamentales porque permiten modelar entidades del mundo real con naturalidad a través de las variables, y procesos del mundo real a través de las órdenes que inspeccionan y actualizan las variables. Este paradigma incluye un amplio repertorio de expresiones: de bloques, condicionales, itertativas y recursivas. Sin embargo, los lenguajes imperativos más importantes (C y ADA) no son lo suficientemente buenos en este aspecto.
+
+Los *procedimientos* permiten generar abstracciones a partir de las órdenes. Se puede diferenciar entre el comportamiento observable de un procedimiento y el algoritmo (las órdenes) mediante el cual este procedimiento alcanza su comportamiento.
+
+La *abstracción de datos* no es compatible con lenguajes imperativos clásicos como C y PASCAL, pero resulta esencial en otros más modernos como ADA. Se puede diferenciar en las propiedades de un tipo abstracto y su representación; entre el comportamiento observable de las operaciones del tipo abstracto y los algoritmos mediante los cuales estas operaciones alcanzan su comportamiento.
+
 - **Compare los paradigmas Imperativo y Logico.**
 - **Describa a que se llama un lenguaje hibrido.**  
 - **Indique a forma de abordar la solucion de un problema en los
