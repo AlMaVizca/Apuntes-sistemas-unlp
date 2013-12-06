@@ -1,7 +1,5 @@
 # Primer modulo
 
-# Primer modulo
-
 ## A - Criterios de evaluacion y evolucion de los lenguajes
 
 ### A-1. Indique los criterios para evaluar un lenguaje de programacion.
