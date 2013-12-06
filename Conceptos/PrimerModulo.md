@@ -4,86 +4,56 @@
 
 ### A-1. Indique los criterios para evaluar un lenguaje de programacion.
 
-Criterios de evaluación:
+**Criterios de evaluación:**
+Fácil de escribir -> Legible -> Confiable 
+Mantenible
+Eficiente
 
- - Fácil de escribir -> Legible -> Confiable
- - Mantenible
- - Eficiente
-
-**Facil de escribir**
-	
-        Es la medida de cuán fácil resulta un lenguaje para construir soluciones.
-
-En la decada del '70 se focalizaba en escribir código, y del '70 en
-adelante el mantenimiento del software fue reconocido como una parte
-importante del ciclo de vida, particularmente en terminos de costo.
-
-Cuan facil es mantener un programa es determinado por la facilidad de
-lectura y esto refleja una caracteristica de calidad en los programas
-y en los lenguajes de programacion.
-
-- Simplicidad 
-   - muchas componentes de construcción
-   - muchas formas de hacer lo mismo
-   - polimorfismo
-- Ortgonalidad
-   - Algol'68 extremadamente ortogonal
+**Fácil de escribir**
+Es la medida de cuán fácil resulta un lenguaje para construir soluciones.
 
 Dentro de este criterio encontramos 4 características:
-
-   1. Simplicidad -> facil de capturar: entender y recordar.
-   2. Expresividad -> Concentrar la atencion en la resolucion del problema
-   3. Ortogonalidad -> El usuario comprende mejor si tiene un pequeño
-   número de primitivas y un conjunto consistente de reglas de combinación.
-   4. Soporte  de Abstraccion -> Concepto clave para manejar la
-   complejidad, abstracción de procesos y de datos.
-
-
+- Simplicidad ->fácil de capturar: entender y recordar.
+- Expresividad -> Concentrar la atención en la resolución del problema
+- Ortogonalidad -> El usuario comprende mejor si tiene un pequeño número de primitivas y un conjunto consistente de reglas de combinación.
+- Soporte de Abstraccion -> Concepto clave para manejar la complejidad, abstracción de procesos y de datos.
+	
 **Legible**
-
-        Es la medida de cuan fácil de leer resulta para las personas.
+	Es la medida de cuan fácil de leer resulta para las personas.
 
 Elementos que afectan a la legibilidad:
+- Semántica: Los Alias, efectos laterales y estructuras de datos pueden afectar la legibilidad
+- Sintaxis:  Debe permitir comentarios. No debe permitir ambigüedades entre semántica y sintaxis.
+- Definición: precisión en la definición de la sintaxis y la semántica. (ambigüedad - portabilidad - Definiciones formales)
+- Estructuras de datos: programación estructurada
+- Estructuras de control:  Facilidades para expresar los datos del problema
 
- 1. Semántica: Los Alias, efectos laterales y estructuras de datos pueden afectar la legibilidad
- 2. Sintaxis:  Debe permitir comentarios. No debe permitir ambigüedades entre semántica y sintaxis.
- 3. Definición: precisión en la definición de la sintaxis y la semántica. (ambigüedad - portabilidad - Definiciones formales)
- 4. Estructuras de datos: programación estructurada
- 5. Estructuras de control:  Facilidades para expresar los datos del problema
 
-
+
 **Confiable**
-     
-        Un lenguaje debe aportar mecanismos para comprobar que sus programas sean correcto. 
-        El objetivo es comprobar estáticamente la mayor cantidad de aspectos, 
-        ya que lo dinámico no certifica la correctitud del programa.
+	Un lenguaje debe aportar mecanismos para comprobar que sus programas sean correcto. El objetivo es comprobar estáticamente la mayor cantidad de aspectos, ya que lo dinámico no certifica la correctitud del programa.
  
 Aspectos que afectan la confiabilidad de un programa:
- 
- 1. Correcto: cumple con las especificaciones
- 2. Robustez:  permite manejo de errores (excepciones)
- 3. Chequeo de tipos: estáticos y dinámicos
- 4. Restricción de alias
+- Correcto: cumple con las especificaciones
+- Robustez:  permite manejo de errores (excepciones)
+- Chequeo de tipos: estáticos y dinámicos
+- Restricción de alias
 
 **Mantenibilidad**
 
 Aspectos que afectan la mantenibilidad:
-
- 1. Modificabilidad: Fácil para introducir cambios 
- 2. Factoreo: poder reutilizar código
- 3. Localidad: El efecto de una característica se restringe a una porción local del código
-
+- Modificabilidad: Fácil para introducir cambios 
+- Factoreo: poder reutilizar código
+- Localidad: El efecto de una característica se restringe a una porción local del código
 
 **Eficiencia**
 
 Aspectos que afectan la eficiencia:
-
- 1. Tiempo de ejecución
- 2. Memoria utilizada
- 3. Espacio en disco
- 4. Esfuerzo humano
- 5. Optimizable
-
+- Tiempo de ejecución
+- Memoria utilizada
+- Espacio en disco
+- Esfuerzo humano
+- Optimizable
 
 
 ###A-2. ¿En la actualidad como se mide la eficiencia del software? Evoluciono este concepto.
