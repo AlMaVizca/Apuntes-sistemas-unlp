@@ -38,15 +38,39 @@ La recolección de basura es la técnica por la cual el entorno de objetos se en
 
 	Componentes principales de los lenguages de programación OO:
 	
+*Objetos:*
+Un objeto tiene una o más variables y cuenta con métodos que trabajan en él. Por lo general, las variables son privadas, y solo se puede acceder a ellas a través de los métodos de ese objeto. Los objetos proporcionan una manera natural de modelar entidades del mundo real y entidades sibernéticas como archivos, bases de datos, páginas web, componentes de la interfaz de usuarios, etc.
 
-*Clase:*s, metodos, objetos, mensajes.
+*Clases:*
+Una clase es una familia de objetos con variables y métodos similares. Una *subclase* entiende una clase dada con más componentes y métodos. Cada subclase puede tener sus propias subclases y así formar una jerarquía de clases.
+
  
-*Objetos*:entidades con estado interno y comportamiento.
-
+ 
 - **?Como evoluciona el concepto de tipos a lo largo de la historia de
     los lenguajes? Hasta llegar al Paradigma OO.**
+
+	Los distintos valores que manipulan los programas de computación se agrupan en *tipos*. Por ejemplo, casi todos los lenguages disntinguen entre números enteros y reales, y entre booleanos y enteros. Un *tipo* es un conjunto de valores, pero no todos los conjuntos de valores forman necesariamente un tipo. Para que un conjunto de valores sea considerado un tipo, todas las operaciones relacionadas con ese tipo se deben comportar de la misma forma cuando se aplican a todos los valores del tipo. Es decir, que un tipo se caracteriza no solo por el conjunto de valores sino también por las operaciones que se aplican a esos valores.
+	Todos los lenguages de programación soportan *tipos primitivos* y *tipos compuestos*. Algunos también soportan *tipos recursivos*.
 	
+*Tipo primitivo:*
+No se puede descomponer en valores más sencillos. Los valores ya son primitivos. Pueden ser incorporados (built-in), ya incluidos en el lenguage; definidos, se definen de cero, nuevos; o discretos, que tienen una relación directa con un rango de números enteros.
+
+*Tipo compuesto:*
+Está compuesto por valores más simples. Los valores son compuestos. Pueden ser estructuras, registros, arreglos, tipos algebráicos, registros discriminados, objetos, uniones, cadenas, listas, árboles, relaciones, etc.
+
+*Tipo recursivo:*
+Se define según él mismo, como las listas y las cadenas. Una *lista* es una secuencia de valores, que puede tener cualquier cantidad de componentes, incluso cero (*lista vacía*). Las listas pueden ser homogéneas o heterogéneas en cuanto al tipo de sus componentes. Una *cadena* es una secuencia de caracteres, que al igual que las listas puede tener cualquier cantidad de componentes, incluso cero (*cadena vacía*).
+
+	Conceptos relacionados
 	
+*Sistemas de tipos:*
+Un sistema de tipos agrupa los valores en tipos. Esto permite que los programadores describan los datos con mayor eficacia y evita que los programas realicen operaciones sin sentido, un *error de tipo*. Los sistemas de tipos distinguen los lenguages de alto nivel de los lenguages de bajo nivel. En los de bajo nivel, los únicos tipos que hay son bytes y palabras, por lo cual no se pueden evitar las operaciones sin sentido.
+
+En los lenguages de *tipos estáticos*, las variables y las expresiones son fijas, ya sea expllícitamente definidas por el programador o inferidas por el compilador. En los lenguages de *tipos dinámicos*, los valores son fijos, pero las variables y las expresiones, no. Cada vez que se computa un operando, puede dar un valor de un tipo diferente. La mayoría de los lenguages de alto nivel son de tipos estáticos. En cambio, SMALLTALK, LISP, PROLOG, PERL y PYTHON) son de tipos dinámicos.
+
+equivalencia de tipos
+Principio de compleción de tipos
+
 	- Tipos predefinidos
 	- Tipos definidos por el usuario
 	- Tad's  ->encapsulamiento y Ocultamiento?
