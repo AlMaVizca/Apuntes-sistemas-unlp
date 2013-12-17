@@ -1,8 +1,8 @@
-# Primer modulo
+# Primer módulo
 
-## A - Criterios de evaluacion y evolucion de los lenguajes
+## A - Criterios de evaluación y evolución de los lenguajes
 
-### A-1. Indique los criterios para evaluar un lenguaje de programacion.
+### A-1. Indique los criterios para evaluar un lenguaje de programación.
 
 Criterios de evaluación:
 
@@ -258,7 +258,8 @@ important still.*
 
 **Definición:**: Conjuto de reglas que definen como componer letras, digitos y otros caracteres para formar los programas 
 
-**Utilidad:**  de componer instrucciones*
+**Utilidad:**  *de componer instrucciones*
+
 Es un protocolo para poder escribir en un leguaje
 
 Favorece:
@@ -266,7 +267,7 @@ Favorece:
      - Legibilidad
      - Verficabilidad
      - Facil abstracción
-     - Auscencia de ambiguedad 
+     - Ausencia de ambiguedad 
 
 Elementos de la sintaxis:
  
