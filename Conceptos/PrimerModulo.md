@@ -6,28 +6,15 @@
 
 Criterios de evaluación:
 
- - Fácil de escribir -> Legible -> Confiable
+ - Fácil de escribir 
+ - Legible 
+ - Confiable
  - Mantenible
  - Eficiente
 
 **Facil de escribir**
 	
-        Es la medida de cuán fácil resulta un lenguaje para construir soluciones.
-
-En la decada del '70 se focalizaba en escribir código, y del '70 en
-adelante el mantenimiento del software fue reconocido como una parte
-importante del ciclo de vida, particularmente en terminos de costo.
-
-Cuan facil es mantener un programa es determinado por la facilidad de
-lectura y esto refleja una caracteristica de calidad en los programas
-y en los lenguajes de programacion.
-
-- Simplicidad 
-   - muchas componentes de construcción
-   - muchas formas de hacer lo mismo
-   - polimorfismo
-- Ortgonalidad
-   - Algol'68 extremadamente ortogonal
+*Es la medida de cuán fácil resulta un lenguaje para construir soluciones.*
 
 Dentro de este criterio encontramos 4 características:
 
@@ -41,7 +28,7 @@ Dentro de este criterio encontramos 4 características:
 
 **Legible**
 
-        Es la medida de cuan fácil de leer resulta para las personas.
+*Es la medida de cuan fácil de leer resulta para las personas.*
 
 Elementos que afectan a la legibilidad:
 
@@ -54,9 +41,7 @@ Elementos que afectan a la legibilidad:
 
 **Confiable**
      
-        Un lenguaje debe aportar mecanismos para comprobar que sus programas sean correcto. 
-        El objetivo es comprobar estáticamente la mayor cantidad de aspectos, 
-        ya que lo dinámico no certifica la correctitud del programa.
+ *Un lenguaje debe aportar mecanismos para comprobar que sus programas sean correcto. El objetivo es comprobar estáticamente la mayor cantidad de aspectos, ya que lo dinámico no certifica la correctitud del programa.*
  
 Aspectos que afectan la confiabilidad de un programa:
  
@@ -102,9 +87,7 @@ La eficiencia del software se mide:
     - Optimizable
 
 	
-
-	
-La eficiencia del software se mide teniendo en cuenta:(Pag 13 Ghezzi)
+La eficiencia del software se mide teniendo en cuenta:
 
 - La velocidad de ejecución
 - El tiempo utilizado
@@ -113,9 +96,7 @@ La eficiencia del software se mide teniendo en cuenta:(Pag 13 Ghezzi)
 Es decir que el concepto cambio, anteriormente sólo era considerado el espacio ocupado y la velocidad de ejecución. Ahora no tiene que dejarse de lado el esfuerzo requerido en la producción de software y en el mantenimiento del mismo.
 
 
-
-
-### A-3. ¿Que significa que un lenguaje sea ortogonal?
+### A-3. ¿Qué significa que un lenguaje sea ortogonal?
 
 Significa que un conjunto relativamente pequeño de constructores
 primitivos pueden ser combinados para construir el flujo y las
@@ -187,7 +168,7 @@ Ada incorporó:
  - Unidades genéricas: packaging
 
 
-### A-9. ¿Segun su criterio: Cuales fueron los lenguajes que mas aportaron a la evolucion de los lenguajes. Por que?
+### A-9. ¿Según su criterio: Cuales fueron los lenguajes que mas aportaron a la evolución de los lenguajes. Por qué?
 
 Simula -> dio origen a las clases / objetos
 
@@ -196,7 +177,7 @@ PL1 -> dio origen a las excepciones.
 
 ## B - Procesamiento de un lenguaje
 
-### B-1. Que son la compilacion y la interpretacion? Defina y describa ambos procesos. Comparelos por distintos criterios.
+### B-1. Que son la compilación y la interpretación? Defina y describa ambos procesos. Comparelos por distintos criterios.
 
  - Compilador:
   	- Analisis lexico
@@ -239,14 +220,7 @@ Formas de definir la sintaxis:
 La utilidad de definir la sintaxis y la semántica de un lenguaje es determinar si un programa es válido y si lo es que significa.
 
 
-
-*Syntax influences how programs are written by the programmer, read by
-other programmers, and parsed by the computer. Semantics determines
-how programs are composed by the programmer, understood by other
-programmers, and interpreted by the computer. Pragmatics influences
-how programmers are expected to design and implement programs in
-practice. Syntax is important, but semantics and pragmatics are more
-important still.*
+*Syntax influences how programs are written by the programmer, read by other programmers, and parsed by the computer. Semantics determines how programs are composed by the programmer, understood by other programmers, and interpreted by the computer. Pragmatics influences how programmers are expected to design and implement programs in practice. Syntax is important, but semantics and pragmatics are more important still.*
 
 *The syntax rules of the language state how to form expressions, statements, and programs that look right.*
 *The semantic rules of the language tell us how to build meaningful expressions, statements and programs*
@@ -291,9 +265,11 @@ Elementos de la sintaxis:
 **Sintaxis concreta:** Especificamente como se escribe la expresion en un lenguaje concreto
 
    - **Abstracta**
+```
       While <condicion> <sentenciase>
+```
    - **Concreta**
-
+```
          while (i<100) {i++; tot+=1}
 
 	     while (i<100) do
@@ -301,7 +277,8 @@ Elementos de la sintaxis:
 	      i=i+1
 		  tot=tot+1
 		 end
-	  
+```
+
 ### D-4. Que forma de definir la sintaxis conoce?, Comparelas.
 
 Formas de definir la sintaxis:
@@ -311,17 +288,15 @@ Formas de definir la sintaxis:
  - Backus y Naun: BNF(Ej: Algol) 
  - Diagramas Sintacticos: equivalentes a BNF pero mucho mas intuitivos (Diagrama de conway)
 
-
-
 ### D-5. Diferencias entre una gramatica libre de contexto y una gramatica sensible al contexto. Ejemplos
 
-**Gramatica**: forma de definir la sintaxis de un lenguaje G = (N,T,S,P)
+**Gramática**: forma de definir la sintaxis de un lenguaje G = (N,T,S,P)
 
 Ejemplo: int a; int a;
 
-Una gramatica libre de contexto no analiza si un a se definio mas de una vez, en cambio una sensible al contexto si lo analiza.
+Una gramática libre de contexto no analiza si un a se definio mas de una vez, en cambio una sensible al contexto si lo analiza.
  
-evaluacion de tipos en un condicional
+evaluación de tipos en un condicional
 
 ### D-6. Cuando una gramatica es ambigua? Se puede solucionar?
 Cuando una gramatica puede generar dos arboles sintacticos
@@ -330,4 +305,4 @@ Cuando una gramatica puede generar dos arboles sintacticos
 Herramientas para escribir gramaticas
 EBNF es la version extendida
 
-Consta basicamente de 4 elementos G= (N,T,S,P)
+Consta básicamente de 4 elementos G= (N,T,S,P)
