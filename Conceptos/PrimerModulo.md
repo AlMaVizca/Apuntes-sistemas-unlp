@@ -302,7 +302,14 @@ evaluación de tipos en un condicional
 Cuando una gramatica puede generar dos arboles sintacticos
 
 ### D-7. Que son BNF y EBNF? Definalas y comparelas.
-Herramientas para escribir gramaticas
-EBNF es la version extendida
+
+**Herramientas para escribir gramaticas**
+
+EBNF es la version extendida, y su aporte es soportar los simbolos
+?,*,+
+
+*?* Significa que puede aparecer (el simbolo marcado es opcional)
+*\** Significa que puede repetirse cualquier numero de veces
+*+* Significa que puede repetirse una o mas veces
 
 Consta básicamente de 4 elementos G= (N,T,S,P)
