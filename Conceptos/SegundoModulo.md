@@ -283,12 +283,32 @@ Identidicadores predefinidos por el lenguaje
 
 ### H-7. Justifique la existencia de un link dinámico en la semántica operacional de un lenguaje. Si el lenguaje sigue la cadena estatica, para resolver las referencias no locales, ?es necesario el link dinamico? Justifique
 
+Link Dinámico: me sirve para saber quien invoco a la
+funcion/procedimiento
+
+Es necesario el link dinámico porque los registros de activación no
+estan mapeados en memoria de forma homogenea, por lo que si no
+tuvieramos la dirección del link dinamico, no podriamos determinar
+donde esta el retorno. 
+
 ### H-8. ¿Que es una variable sensible a la historia? ?Todos los lenguajes las proveen?.
 
-Que una variable sea sensible a la historia significa que el tiempo de
-vida exede al tiempo de vida de la unidad(??????)
+Una variable sensible a la historia es aquella que conserva su
+L-valor. Las unicas variables que son sensibles a la historia son las
+estáticas siempre y cuando el lenguaje asi lo defina.
 
 ### H-9. Marque diferencias semánticas y como se los implementa, a un arreglo seminidinámico y un arreglo dinámico. Que se hace en compilación y que en ejecución?
-	
+
+Arreglo semidinámico: en copilacion se determina que tipo va a ser
+(descriptor) y en ejecución se determina cuanto va a ocupar
+
+Arreglo dinámico: se tiene que alocar en forma explicita
+la memoria.  En compilación se puede llegar a fijar el nombre..
+
 ### H-10. Cuando es indispensable que un objeto de dato sea almacenado en el heap?  Ejemplos
 
+Es necesario almacenarlo en la heap cuando el dato es dinámico y
+cuando no se cuanto va a ocupar.
+
+Los arreglos dinámicos se almacenan en la heap y los semidinámicos en
+la pila de ejecución
