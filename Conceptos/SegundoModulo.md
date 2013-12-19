@@ -229,20 +229,63 @@ porque el valor perdura en memoria durante y despues de finalizado el programa
 - Los datos se alocan dinámicamente durante la ejecución
 
 ### H-2. Los lenguajes actuales ?se encuadran en uno de estos esquemas? Justifique.
-	
+
+Si
+
 ### H-3. Indique con que clase de variables se puede trabajar en cada esquema.
-    
+
+(????????)
+
+**Esquema estático**
+- C1
+Tipos simples, enteros, reales, arreglos (de tamaño fijo), estructuras
+- C2 y C2'
+Variables Locales y globales
+**Esquema basado en pila**
+- C3 y C4 C4' C4''
+controla el alcance de las variables y define el tiempo de vida
+
+**Esquema dinámico**
+
+- C5 C5' C5''
+Arreglos dinámicos
+
+- C6
+Tipado dinámico
+
 ### H-4. Que información se guarda en el segmento de código de una unidad?
-	
+
+En el segmento de código de una unidad se almacena el código fuente
+que da significado semántico a la unidad
+
 ### H-5. Esquematice el registro de activación de una unidad, indicando que información contiene.
-    
+
+(????????????)
+Cuando una unidad es llamada se genera un registro de activación que
+contiene un punto de retorno y un link dinamico que informa a donde se
+cargo el registro de activacion
+
 ### H-6. Describa el ambiente de referencia de una unidad.
 
+- Local
+Asociaciones creadas al activar la unidad (parámetros formales,
+parámetros locales y subprogramas locales
+- No local
+Referencias creadas antes de activar la unidad (depende de la cadena
+estática o dinámica)
+- Global
+Conjunto de referencias accesibles desde cualquier unidad (es incluido
+en el no local)????????
+- Predefinido
+Identidicadores predefinidos por el lenguaje
 
 ### H-7. Justifique la existencia de un link dinámico en la semántica operacional de un lenguaje. Si el lenguaje sigue la cadena estatica, para resolver las referencias no locales, ?es necesario el link dinamico? Justifique
-	
+
 ### H-8. ¿Que es una variable sensible a la historia? ?Todos los lenguajes las proveen?.
-	
+
+Que una variable sea sensible a la historia significa que el tiempo de
+vida exede al tiempo de vida de la unidad(??????)
+
 ### H-8. Marque diferencias semánticas y como se los implementa, a un arreglo seminidinámico y un arreglo dinámico. Que se hace en compilación y que en ejecución?
 	
 ### H-9. Cuando es indispensable que un objeto de dato sea almacenado en el heap?  Ejemplos
