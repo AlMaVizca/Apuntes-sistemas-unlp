@@ -168,7 +168,6 @@ espacio es reservado por el programador.
 
 Por ejemplo los arreglos en Ada
 
-
 ### G-6. Cuales son las diferencias semanticas entre variable estatica y constante. Ejemplifique.
 
 una variable estática puede cambiar su valor durante la ejecución del
@@ -289,7 +288,7 @@ Identidicadores predefinidos por el lenguaje
 Que una variable sea sensible a la historia significa que el tiempo de
 vida exede al tiempo de vida de la unidad(??????)
 
-### H-8. Marque diferencias semánticas y como se los implementa, a un arreglo seminidinámico y un arreglo dinámico. Que se hace en compilación y que en ejecución?
+### H-9. Marque diferencias semánticas y como se los implementa, a un arreglo seminidinámico y un arreglo dinámico. Que se hace en compilación y que en ejecución?
 	
-### H-9. Cuando es indispensable que un objeto de dato sea almacenado en el heap?  Ejemplos
+### H-10. Cuando es indispensable que un objeto de dato sea almacenado en el heap?  Ejemplos
 
