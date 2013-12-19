@@ -162,10 +162,12 @@ por decision del programador.
 
 ### G-5. ¿Cuales son las diferencias semanticas entre variable estatica y variable semiestatica?. (respecto a su l-valor)Ejemplifique.
 
-(Entiendo que semiestaticas = a semidinamica?)
+Para poder utilizar una variables estática se necesita reservar
+espacio de memoria con anterioridad mientras que en la semiestatica el
+espacio es reservado por el programador.
 
-Para poder utilizar una variables semiestatica se necesita reservar
-espacio de memora con anterioridad.
+Por ejemplo los arreglos en Ada
+
 
 ### G-6. Cuales son las diferencias semanticas entre variable estatica y constante. Ejemplifique.
 
@@ -241,6 +243,7 @@ Si
 Tipos simples, enteros, reales, arreglos (de tamaño fijo), estructuras
 - C2 y C2'
 Variables Locales y globales
+
 **Esquema basado en pila**
 - C3 y C4 C4' C4''
 controla el alcance de las variables y define el tiempo de vida
