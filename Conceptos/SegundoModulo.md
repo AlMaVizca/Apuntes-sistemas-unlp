@@ -214,17 +214,20 @@ porque el valor perdura en memoria durante y despues de finalizado el programa
 ### H-1. En general, indique las caracteristicas de un lenguaje con un esquema estáticas, uno basado en pila y uno con esquema dinámico.
 
 **Estático**
+C1 y C2 - Fortran
 
 - El espacio necesario para la ejecucion se deduce del código
 - La alocación puede hacerse estáticamente
 - No puede haber recursión
 
 **Basado en pila**
+C3 y C4 Pascal
 
 - El espacio se deduce del código
 - El espacio es predecible
 
 **Dinámico**
+C5 y C6 APL, snobol/4
 
 - El espacio es impredecible
 - Los datos se alocan dinámicamente durante la ejecución
@@ -238,22 +241,16 @@ Si
 (????????)
 
 **Esquema estático**
-- C1
-Tipos simples, enteros, reales, arreglos (de tamaño fijo), estructuras
-- C2 y C2'
-Variables Locales y globales
+
+C1 y C2 : variables estáticas
 
 **Esquema basado en pila**
-- C3 y C4 C4' C4''
-controla el alcance de las variables y define el tiempo de vida
+
+C3 y C4: Variables automáticas
 
 **Esquema dinámico**
 
-- C5 C5' C5''
-Arreglos dinámicos
-
-- C6
-Tipado dinámico
+C5 y C6: variables dinámicas y semi-dinamicas
 
 ### H-4. Que información se guarda en el segmento de código de una unidad?
 
