@@ -199,11 +199,11 @@ orden físico de las sentencias.
 punto de vista del hardware aunque el proceso de compilación en si mismo lleva mas tiempo.
 	- En cuanto al espacio ocupado el intérprete ocupa menos espacio. Cada sentencia se deja en la 
 forma original; el compilador una sentencia ocupa cientos de sentencias de maquina.
-	- La detección de errores es más difícil para el intérprete que para el compilador.
+	- La detección de errores es más fácil para el intérprete que para el compilador.
 
-## C- Sintaxis y semantica
+## C- Sintaxis y semántica
 
-### C-1. Sintaxis y semantica de un lenguaje. Defina que es cada concepto e indique cual es la manera formal o no formal que usan generalmente los lenguajes de  programacion.
+### C-1. Sintaxis y semántica de un lenguaje. Defina que es cada concepto e indique cual es la manera formal o no formal que usan generalmente los lenguajes de  programacion.
 
  **Sintaxis**: conjunto de reglas que definen como componer letras, dígitos y otros 
 caracteres para formar los programas. 
