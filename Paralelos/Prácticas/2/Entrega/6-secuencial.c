@@ -51,7 +51,6 @@ int main(int argc,char*argv[]){
 	  b += B[i,j];
 	}
   }
-     
   a /= (N*N);
   b /= (N*N);
   double average = a*b;
