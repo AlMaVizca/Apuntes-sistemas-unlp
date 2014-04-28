@@ -38,10 +38,10 @@ void scalarXmatrix(int N, double *matrix, int scalar, double *result){
 
 
 int main(int argc,char*argv[]){
- double *A,*B,*C,*M_TMP1,*M_TMP2;
+    double *A,*B,*C,a,b;
  int i,j,k;
- int check=1, scalar=7;
- double timetick, avg_1;
+ int check=1;
+ double timetick;
 
  //Controla los argumentos al programa
  if ((argc != 2) || ((N = atoi(argv[1])) <= 0) )
@@ -62,23 +62,17 @@ int main(int argc,char*argv[]){
    }
   }   
 
-  M_TMP1=(double*)malloc(sizeof(double)*N*N);
-  M_TMP2=(double*)malloc(sizeof(double)*N*N);
-
-
  //Realiza el calculo
 
   timetick = dwalltime();
-  avg_1 = average(N, A);
-  printf("average %f", avg_1);
 
-  scalarXmatrix(N, A, average(N,A), M_TMP1);
-  scalarXmatrix(N, B, average(N,B), M_TMP2);
+  a = average(N,A);
+  b = average(N,B);
   for(i=0;i<N;i++){
      for(j=0;j<N;j++){
 	C[i,j]= 0;
  	for(k=0;k<N;k++){
-            C[i,j]=C[i,j]+M_TMP1[i,k]*M_TMP2[k,j];
+            C[i,j]=C[i,j]+(a*A[i,k])*(b*B[k,j]);
 	}
      }
   }
@@ -89,7 +83,6 @@ int main(int argc,char*argv[]){
  //Verifica el resultado
   for(i=0;i<N;i++){
    for(j=0;j<N;j++){
-	//check=check&&(getValor(C,i,j,ORDENXFILAS)==N);
 	check=check&&(C[i,j]==N);
    }
   }   
