@@ -74,15 +74,14 @@ int main(int argc,char*argv[]){
 
   scalarXmatrix(N, A, average(N,A), M_TMP1);
   scalarXmatrix(N, B, average(N,B), M_TMP2);
-
-	for(i=0;i<N;i++){
-		for(j=0;j<N;j++){
-			C[i,j]= 0;
-		 	for(k=0;k<N;k++){
-				C[i,j]=C[i,j]+A[i,k]*B[k,j];
-		 	}
-		}
+  for(i=0;i<N;i++){
+     for(j=0;j<N;j++){
+	C[i,j]= 0;
+ 	for(k=0;k<N;k++){
+            C[i,j]=C[i,j]+M_TMP1[i,k]*M_TMP2[k,j];
 	}
+     }
+  }
     
 
  printf("Tiempo en segundos %f\n", dwalltime() - timetick);
