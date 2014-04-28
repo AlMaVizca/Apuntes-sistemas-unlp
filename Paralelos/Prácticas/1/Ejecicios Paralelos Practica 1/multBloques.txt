@@ -1,0 +1,18 @@
+El algortimo multBloques.c lo que hace es multiplicar 2 matrices ( A y B ) y guardar el resultado en una matriz C. A diferencia del ejercicio 1, utiliza multiplicación por bloques, lo que nos provee un aprovechamiento del uso de la cache, ya que usamos la matriz en tamaño de bloques, esos bloques que se necesitan para la operacion permanecen en cache hasta que se terminen de usar, liberandolos y pasando otros nuevos bloques a cache. De esta manera minimizamos la accesos a memoria principal y en consecuencia logrando una mejor eficiencia en la multiplicacion de matrices.
+Respecto al ejericio 1 sin modificar, los accesos son muchos menores, por lo que logra mejores tiempos teniendo cualquier tamaño de probado.
+Se ha probado con tamaño de la matriz de 1024, variando la cantidad y tamaño de bloques.
+Resultados:
+r		B		Tiempo en segundos
+1 		1024	49.034200
+2 		512		45.710666
+4		256		10.559408
+8		128		9.382516
+1024	1		116.208519
+512		2		22.569235
+256		4		9.863121
+128		8		8.239817
+32		32		7.958188
+
+Donde: r=Cantidad de bloques por lado de la matriz, y, B = tamaño de bloque
+
+Estos resultados dependen de todos modos de la arquitectura de la computadora en la cuál se estén evaluandolos. 

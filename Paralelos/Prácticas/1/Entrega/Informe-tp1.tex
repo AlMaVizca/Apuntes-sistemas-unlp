@@ -1,0 +1,88 @@
+% Created 2014-04-16 Wed 09:27
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Joaquin Villalba, Aldo Vizcaino}
+\date{\today}
+\title{Informe-tp1}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.1 (Org mode 8.2.5h)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Algoritmo multBloques}
+\label{sec-1}
+
+El algortimo multBloques.c lo que hace es multiplicar 2 matrices ( A y
+B ) y guardar el resultado en una matriz C. A diferencia del ejercicio
+1, utiliza multiplicación por bloques, lo que nos provee un
+aprovechamiento del uso de la cache, ya que usamos la matriz en tamaño
+de bloques, esos bloques que se necesitan para la operacion permanecen
+en cache hasta que se terminen de usar, liberandolos y pasando otros
+nuevos bloques a cache. De esta manera minimizamos la accesos a
+memoria principal y en consecuencia logrando una mejor eficiencia en
+la multiplicacion de matrices.
+
+Respecto al ejericio 1 sin modificar, los accesos son muchos menores,
+por lo que logra mejores tiempos teniendo cualquier tamaño de probado.
+\section{Resultados:}
+\label{sec-2}
+
+\begin{center}
+\begin{tabular}{rrrrr}
+N & Tiempo ej1 & Tiempo ej3 bloque 32x32 & bloque 64x64 & bloque 128x128\\
+\hline
+256 & 0.353138 & 0.077341 & 0.081460 & 0.088224\\
+512 & 3.221342 & 0.610583 & 0.666589 & 0.685349\\
+1024 & 56.334456 & 4.871924 & 5.283189 & 5.479715\\
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{rlll}
+N & bloque 32x32 & bloque 64x64 & bloque 128x128\\
+\hline
+256 & ./multBloques 8 32 0 & ./multBloques 4 64 0 & ./multBloques 2 128 0\\
+512 & ./multBloques 16 32 0 & ./multBloques 8 64 0 & ./multBloques 4 128 0\\
+1024 & ./multBloques 32 32 0 & ./multBloques 16 64 0 & ./multBloques 8 128 0\\
+\end{tabular}
+\end{center}
+
+\section{Hardware}
+\label{sec-3}
+Estos resultados dependen de todos modos de la arquitectura de la
+computadora en la cuál se estén evaluandolos. 
+Estos datos fueron obtenidos en una notebook con:
+
+\begin{center}
+\begin{tabular}{ll}
+propiedad & valor\\
+\hline
+Procesador & Intel(R) Core(TM) i7-3537U CPU @ 2.00GHz\\
+Cache & L1d cache: 32K\\
+ & L1i cache:             32K\\
+ & L2 cache:              256K\\
+ & L3 cache:              4096K\\
+\end{tabular}
+\end{center}
+% Emacs 24.3.1 (Org mode 8.2.5h)
+\end{document}

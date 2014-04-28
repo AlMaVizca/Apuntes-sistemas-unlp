@@ -5,9 +5,9 @@
 - **Describa conceptualmente el POO y sus principales componentes.**
 
 	Conjunto de objetos que interactuan entre si intercambiando
-	mensajes para lograr un objetivo en comun.
+	mensajes para lograr un objetivo en común.
 	 - encapsulamiento
-	 - abstraccion
+	 - abstracción
 	 - polimorfismo
 	 - herencia
 
@@ -179,5 +179,5 @@ La *abstracción de datos* no es compatible con lenguajes imperativos clásicos 
 - **Compare los paradigmas Imperativo y Logico.**
 - **Describa a que se llama un lenguaje hibrido.**  
 - **Indique a forma de abordar la solucion de un problema en los
-    diferentes paradigmas. Especifique cual es el rol del programador y cual es el de la
-    computadora, en cada caso.**
+    diferentes paradigmas. Especifique cual es el rol del programador
+    y cual es el de la computadora, en cada caso.**

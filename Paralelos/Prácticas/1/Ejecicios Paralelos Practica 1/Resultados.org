@@ -1,0 +1,31 @@
+* Dos
+** SumMulMatrices 1024
+
+Tiempo en segundos 15.256068 
+Multiplicacion de matrices resultado correcto
+
+** SumMulMatricesOpt 1024
+
+Tiempo en segundos 11.036322 
+Multiplicacion de matrices resultado correcto
+
+Es mas rapido el algoritmo SumMulMatrices ya que con los indices que
+recorre una matriz realiza todos los calculos.
+El algoritmo SumMulMatricesOpt Primero itera sobre los limites de las
+matrices A,B las multiplica y guarda su valor, luego sobre los limites
+de C,D y para finalizar realiza la suma de las matrices.
+
+
+
+* Cuatro
+
+
+* Seis
+
+** No entiendo porque se utiliza x*X cuando el primer termino es x*x*x (x^3).
+
+Con respecto a los resultados, la primer sumatoria es calculada en
+menos tiempo porque resuelve el calculo de la ecuacion constante solo una vez 
+y dentro del bucle solo se calculan los valores relacionados a i.
+
+

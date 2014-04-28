@@ -1,0 +1,20 @@
+Probamos fib con N = 20:
+
+Calculando Fibonacci iterativo para n = 20...
+ Resultado = 6765
+ Tiempo en segundos 0.0000005007 
+Calculando Fibonacci recursivo para n = 20...
+ Resultado = 6765
+ Tiempo en segundos 0.0001532078 
+
+Probamos fib con N = 30:
+
+Calculando Fibonacci iterativo para n = 35...
+ Resultado = 9227465
+ Tiempo en segundos 0.0000005007 
+Calculando Fibonacci recursivo para n = 35...
+ Resultado = 9227465
+ Tiempo en segundos 0.0802930117 
+La diferencia es muy grande cuando evaluamos Fibonacci utilizando iterativo y recursivo. Esto se debe en el caso recursivo consume mucha memoria, ya que mantiene las variables del método y la alocación de memoria es muy grande, malgastando recursos y tiempo. Además la recursividad utiliza la pila del sistema, en caso de haber demasiadas llamadas recursivas puede provocar desbordamiento de pila. En cambio el iterativo a medida que calcula libera la memoria, ya que no va almacenando llamados a funciones a diferencia del recursivo.
+
+

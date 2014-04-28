@@ -1,0 +1,10 @@
+Realizar un algoritmo paralelo con 4 threads que resuelva la siguiente
+operación:
+C = (b*A)*(a*B)
+Donde A y B son matrices de NxN, a es el valor promedio de los
+elementos de la matriz A y b es
+el valor promedio de los elementos de la matriz B.
+Probar para N= 512, 1024 y 2048.
+Calcular el speedup y la eficiencia comparando con la implementación
+secuencial del
+algoritmo.

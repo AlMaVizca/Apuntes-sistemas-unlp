@@ -1,0 +1,38 @@
+Los tiempos utilizando los siguientes valores double x=39916801, y=719 son:
+
+Suma...
+ Tiempo total en segundos 2.5402250290 
+ Tiempo promedio en segundos 0.0000000025 
+Resta...
+ Tiempo total en segundos 2.5231521130 
+ Tiempo promedio en segundos 0.0000000025 
+Producto...
+ Tiempo total en segundos 2.5269718170 
+ Tiempo promedio en segundos 0.0000000025 
+Division...
+ Tiempo total en segundos 7.7294199467 
+ Tiempo promedio en segundos 0.0000000037
+
+Como se puede ver la división es el cálculo más costoso, ya que implica cuentas adicionales como el resto, modulo, a diferencia del resto de 
+las operaciones.
+
+Cuando aplicamos variables que sean potencias de 2, por ejemplo double x=34359738368, y=1024, o, double x=34359738368, y=512, los valores
+difirieron mucho, ya que el tiempo en realizar la división fue muy similar al resto de las operaciones, por ejemplo con el primer caso dicho fue:
+
+Suma...
+ Tiempo total en segundos 2.5188291073 
+ Tiempo promedio en segundos 0.0000000025 
+Resta...
+ Tiempo total en segundos 2.5221920013 
+ Tiempo promedio en segundos 0.0000000025 
+Producto...
+ Tiempo total en segundos 2.5638480186 
+ Tiempo promedio en segundos 0.0000000026 
+Division...
+ Tiempo total en segundos 2.5811870098 
+ Tiempo promedio en segundos 0.0000000026 
+
+Bajando el promedio en segundos de las operaciones. Esto se debe a que al realizar la division los hace mediante un corrimiento lógico (o aritmético) de registros a izquierda o derecha, por eso tarda menos, detecta automaticamente si es potencia de 2, sino, la operacion por hardware es muy costosa de por si.
+
+
+
