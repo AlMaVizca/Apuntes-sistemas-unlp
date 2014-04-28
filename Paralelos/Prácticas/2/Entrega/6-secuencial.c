@@ -16,26 +16,6 @@ double dwalltime(){
         return sec;
 }
 
-double average(int N, double *matrix){
-    int i,j;
-    double sum=0;
-    for(i=0;i<N;i++){
-	for(j=0;j<N;j++){
-	    sum += matrix[i,j];
-	}
-    }
-    return (sum/(N*N));
-}
-
-void scalarXmatrix(int N, double *matrix, int scalar, double *result){
-    int i,j;
-    for(i=0;i<N;i++){
-	for(j=0;j<N;j++){
-	    result[i,j]= matrix[i,j] * scalar;
-	}
-    }
-}
-
 
 int main(int argc,char*argv[]){
     double *A,*B,*C,a,b;
@@ -65,14 +45,21 @@ int main(int argc,char*argv[]){
  //Realiza el calculo
 
   timetick = dwalltime();
-
-  a = average(N,A);
-  b = average(N,B);
+  for(i=0;i<N;i++){
+      for(j=0;j<N;j++){
+	  a += A[i,j];
+	  b += B[i,j];
+	}
+  }
+     
+  a /= (N*N);
+  b /= (N*N);
+  double average = a*b;
   for(i=0;i<N;i++){
      for(j=0;j<N;j++){
 	C[i,j]= 0;
  	for(k=0;k<N;k++){
-            C[i,j]=C[i,j]+(a*A[i,k])*(b*B[k,j]);
+            C[i,j]=C[i,j]+(A[i,k]*B[k,j]*average);
 	}
      }
   }
