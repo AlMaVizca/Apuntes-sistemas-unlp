@@ -44,17 +44,15 @@ void *prod_matrix(void *arg){
     int i,j,k;
     struct thread_data *t_data;
     t_data = (struct thread_data*) arg;
-    int evaluation = (int) 1+t_data->tid*(N/N_THREADS);
+    int evaluation = (int) (1+t_data->tid)*(N/N_THREADS);
     for(i=(int) t_data->tid*(N/N_THREADS);i<evaluation;i++){
      for(j=0;j<N;j++){
 	C[i,j]= 0;
-	//	printf("thread:%d,fila:%d,columna:%d\n",t_data->tid,t,j);
  	for(k=0;k<N;k++){
             C[i,j]+=A[i,k]*B[k,j]*average;
 	}
      }
   }
-
 }
 
 
@@ -110,7 +108,6 @@ int main(int argc,char*argv[]){
 	  b += data[i].result_b;
       }
 
-  printf("promedio a:%f,b:%f\n",a,b); 
   average = (a/(N*N))*(b/(N*N));
   
   for(i=0; i<N_THREADS; i++)
@@ -122,6 +119,10 @@ int main(int argc,char*argv[]){
 	  }
       }
   
+  for(i=0; i<N_THREADS; i++)
+      {
+	  pthread_join(thread[i], NULL);
+      }
     
 
  printf("Tiempo en segundos %f\n", dwalltime() - timetick);
@@ -130,7 +131,6 @@ int main(int argc,char*argv[]){
   for(i=0;i<N;i++){
    for(j=0;j<N;j++){
 	//check=check&&(getValor(C,i,j,ORDENXFILAS)==N);
-       printf("I:%d,J:%d->result:%d\n", i,j,C[i,j]);
 	check=check&&(C[i,j]==N);
    }
   }   
