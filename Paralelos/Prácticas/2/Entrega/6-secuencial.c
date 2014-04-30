@@ -37,14 +37,15 @@ int main(int argc,char*argv[]){
   
   for(i=0;i<N;i++){
    for(j=0;j<N;j++){
-	A[i*N+j] = 1;
-	B[i*N+j] = 1;
+       A[i,j] = 1;
+       B[i,j] = 1;
    }
   }   
 
  //Realiza el calculo
 
   timetick = dwalltime();
+
   for(i=0;i<N;i++){
       for(j=0;j<N;j++){
 	  a += A[i,j];
@@ -56,9 +57,9 @@ int main(int argc,char*argv[]){
   double average = a*b;
   for(i=0;i<N;i++){
      for(j=0;j<N;j++){
-	C[i*N+j]= 0;
+	 C[i,j]= 0;
  	for(k=0;k<N;k++){
-            C[i*N+j]=C[i*N+j]+(A[i*N+j]*B[k+j*N]*average);
+            C[i,j]=C[i,j]+(A[i,j]*B[k,j]*average);
 	}
      }
   }
@@ -69,7 +70,7 @@ int main(int argc,char*argv[]){
  //Verifica el resultado
   for(i=0;i<N;i++){
    for(j=0;j<N;j++){
-	check=check&&(C[i*N+j]==N);
+       check=check&&(C[i,j]==N);
    }
   }   
 

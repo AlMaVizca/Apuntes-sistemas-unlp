@@ -13,6 +13,8 @@ struct thread_data{
     int  tid;
     int  result_a;
     int  result_b;
+    int  start;
+    int  evaluation;
 };
 
 //Para calcular tiempo
@@ -26,38 +28,42 @@ double dwalltime(){
 }
 
 void *t_average(void *arg){
-    int i,j,t;
+    int i,in,j,a=0,b=0;
     struct thread_data *t_data;
     t_data = (struct thread_data*) arg;
-    t_data->result_a=0;
-    t_data->result_b=0;
-    for(i=0,t=t_data->tid*(N/N_THREADS);i<(N/N_THREADS);i++,t++){
+    for(i=t_data->start;i<t_data->evaluation;i++){
+	in=i*N;
 	for(j=0;j<N;j++){
-	    t_data->result_a += A[t,j];
-	    t_data->result_b += B[t,j];
+	    a += A[in+j];
+	    b += B[in+j];
 	}
     }
+    t_data->result_a=a;
+    t_data->result_b=b;
+
 }
 
 
 void *prod_matrix(void *arg){
-    int i,j,k;
+    int i,j,k,in,jn,tmp;
     struct thread_data *t_data;
     t_data = (struct thread_data*) arg;
-    int evaluation = (int) (1+t_data->tid)*(N/N_THREADS);
-    for(i=(int) t_data->tid*(N/N_THREADS);i<evaluation;i++){
+    for(i=t_data->start;i<t_data->evaluation;i++){
+	in=i*N;
      for(j=0;j<N;j++){
-	C[i,j]= 0;
+	 jn=j*N;
+	 tmp=0;
  	for(k=0;k<N;k++){
-            C[i,j]+=A[i,k]*B[k,j]*average;
+            tmp+=A[in+k]*B[k+jn]*average;
 	}
+	C[in+j]=tmp;
      }
   }
 }
 
 
 int main(int argc,char*argv[]){
- int i,j,k;
+ int i,in,j,k;
  int check=1;
  double timetick;
 
@@ -74,9 +80,10 @@ int main(int argc,char*argv[]){
   C=(double*)malloc(sizeof(double)*N*N);
   
   for(i=0;i<N;i++){
+      in=i*N;
    for(j=0;j<N;j++){
-	A[i,j] = 1;
-	B[i,j] = 1;
+	A[in+j] = 1;
+	B[in+j] = 1;
    }
   }   
 
@@ -85,7 +92,7 @@ int main(int argc,char*argv[]){
   struct thread_data data[N_THREADS];
   
   pthread_attr_t attr;
-  int rc;
+  int rc,jobs_thread=N/N_THREADS;
   pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
@@ -94,6 +101,8 @@ int main(int argc,char*argv[]){
   for(i=0; i<N_THREADS; i++)
       {
 	  data[i].tid=i;
+	  data[i].start = (int) i*jobs_thread;
+	  data[i].evaluation = (int) (1+i)*jobs_thread;
 	  rc = pthread_create(&thread[i], &attr, t_average, (void *) &data[i]);
 	  if (rc){
 	      printf("ERROR; return code from pthread_create() is %d\n", rc);
