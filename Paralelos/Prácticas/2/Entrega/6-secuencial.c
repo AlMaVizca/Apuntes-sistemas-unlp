@@ -65,7 +65,7 @@ int main(int argc,char*argv[]){
   }
     
 
- printf("Tiempo en segundos %f\n", dwalltime() - timetick);
+  //printf("Tiempo en segundos %f\n", dwalltime() - timetick);
 
  //Verifica el resultado
   for(i=0;i<N;i++){
@@ -75,7 +75,8 @@ int main(int argc,char*argv[]){
   }   
 
   if(check){
-   printf("Multiplicacion de matrices resultado correcto\n");
+      //printf("Multiplicacion de matrices resultado correcto\n");
+      printf("%f\n",dwalltime() - timetick);
   }else{
    printf("Multiplicacion de matrices resultado erroneo\n");
   }
