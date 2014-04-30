@@ -26,11 +26,12 @@ double dwalltime(){
 void *t_average(void *arg){
     struct thread_data *t_data;
     t_data = (struct thread_data*) arg; 
-    int i,j,a=0,b=0,eval=(t_data->tid+1)*jobs_thread;
+    int i,in,j,a=0,b=0,eval=(t_data->tid+1)*jobs_thread;
     for(i=t_data->tid*jobs_thread;i<eval;i++){
+	in=i*N;
 	for(j=0;j<N;j++){
-	    a += A[i,j];
-	    b += B[i,j];
+	    a += A[in+j];
+	    b += B[in+j];
 	}
     }
     t_data->result_a=a;
@@ -42,21 +43,23 @@ void *t_average(void *arg){
 void *prod_matrix(void *arg){
     struct thread_data *t_data;
     t_data = (struct thread_data*) arg; 
-    int i,j,k,a=0,b=0,eval=(t_data->tid+1)*jobs_thread,tmp;
+    int i,in,j,jn,k,a=0,b=0,eval=(t_data->tid+1)*jobs_thread,tmp;
     for(i=t_data->tid*jobs_thread;i<eval;i++){
+	in=i*N;
      for(j=0;j<N;j++){
+	 jn=j*N;
 	 tmp=0;
  	for(k=0;k<N;k++){
-            tmp+=A[i,k]*B[k,j]*average;
+            tmp+=A[in+k]*B[k+jn]*average;
 	}
-	C[i,j]=tmp;
+	C[in+j]=tmp;
      }
   }
 }
 
 
 int main(int argc,char*argv[]){
- int i,j,k;
+ int i,in,j,k;
  int check=1;
  double timetick;
 
@@ -73,9 +76,10 @@ int main(int argc,char*argv[]){
   C=(double*)malloc(sizeof(double)*N*N);
   
   for(i=0;i<N;i++){
+      in=i*N;
    for(j=0;j<N;j++){
-       A[i,j] = 1;
-       B[i,j] = 1;
+	A[in+j] = 1;
+	B[in+j] = 1;
    }
   }   
 
@@ -129,9 +133,10 @@ int main(int argc,char*argv[]){
 
  //Verifica el resultado
   for(i=0;i<N;i++){
+      in=i*N;
    for(j=0;j<N;j++){
 	//check=check&&(getValor(C,i,j,ORDENXFILAS)==N);
-       check=check&&(C[i,j]==N);
+	check=check&&(C[in+j]==N);
    }
   }   
 
