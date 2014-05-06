@@ -37,13 +37,16 @@ int main(int argc,char*argv[]){
 
   timetick = dwalltime();
  //Realiza la multiplicacion
-#pragma omp parallel for default(shared) private(i,j)
+int tmp;
+#pragma omp parallel for default(shared) private(i,j,tmp)
     for(i=0;i<N;i++){
         for(j=0;j<N;j++){
-            C[i*N+j]=0;
+            tmp=0;
             for(k=0;k<N;k++){
-         	C[i*N+j]= C[i*N+j] + A[i*N+k]*B[k+j*N];
+         	tmp += A[i*N+k]*B[k+j*N];
             } 
+            C[i*N+j]=tmp;
+	    printf("thread:%d,tmp:%d\n",i,j,tmp);
          }
      }
   printf("Tiempo en segundos %f \n", dwalltime() - timetick);
