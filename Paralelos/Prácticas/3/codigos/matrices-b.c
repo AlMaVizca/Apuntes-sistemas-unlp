@@ -29,7 +29,6 @@ int main(int argc,char*argv[]){
 
  //Inicializa las matrices A y B en 1, el resultado sera una matriz con todos sus valores en N
   for(i=0;i<N;i++){
-        #pragma omp parallel for firstprivate(i) shared(A,B)
    for(j=0;j<N;j++){
 	A[i*N+j]=1;
 	B[i+j*N]=1;
@@ -38,7 +37,9 @@ int main(int argc,char*argv[]){
 
   timetick = dwalltime();
  //Realiza la multiplicacion
+  int tmp=0;
   for(i=0;i<N;i++){
+#pragma omp parallel for firstprivate(i) shared(A,B) private(j)
    for(j=0;j<N;j++){
     C[i*N+j]=0;
     for(k=0;k<N;k++){

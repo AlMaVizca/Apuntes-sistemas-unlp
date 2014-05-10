@@ -1,7 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define ORDENXFILAS 0
-#define ORDENXCOLUMNAS 1
 
 //Dimension por defecto de las matrices
 int N=100;

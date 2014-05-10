@@ -46,7 +46,6 @@ int tmp;
          	tmp += A[i*N+k]*B[k+j*N];
             } 
             C[i*N+j]=tmp;
-	    printf("thread:%d,tmp:%d\n",i,j,tmp);
          }
      }
   printf("Tiempo en segundos %f \n", dwalltime() - timetick);
