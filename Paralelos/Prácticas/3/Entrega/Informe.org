@@ -24,6 +24,18 @@ la carga del ultimo thread creado.
 Para solucionar este inconveniente se utiliza la clausula schedule
 
 
+
+|    N | Tiempo secuencial |     OMP 4 hilos original      | OMP 4 hilos corregido         |
+|------+-------------------+-------------------------------+----------------------------- |
+|      |                   | Tiempo | Speedup | Eficiencia |Tiempo | Speedup | Eficiencia |
+|------+-------------------+--------+---------+------------+-------+---------+------------ |
+|2048|2|3|4|5|6|7|
+|4096|2|3|4|5|6|7|
+|8192|2|3|4|5|6|7|
+|16384|2|3|4|5|6|7|
+
+
+
 completa de la fila 1
 
   trabajo no se distribuye de
