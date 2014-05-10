@@ -1,0 +1,99 @@
+#+AUTHOR: Joaquin Villalba, Aldo Vizcaino
+
+* Informe
+
+El ejercicio tiene el problema de que el trabajo no esta distribuido
+de forma uniforme. 
+El funcionamiento esta programado de forma de que la fila N+1 procesa
+menos datos que la fila N.
+
+Por ejemplo, cuando el indice de filas sea 0, se va a realizar el
+cambio de posicion de N elementos, y cuando el indice de filas sea N-1
+solo se va a realiza el intercambio de posiciones en dos elementos.
+
+Esto genera que el scheduling por defecto que utiliza omp (N/THREADS)
+no sea el mejor.
+
+Por defecto el numero de filas a procesar es divido entre la cantidad
+de threads, entonces el thread 0 procesara hasta el elemento
+(N/Threads).
+Por lo anteriormente explicado, la carga de este thread es superior a
+la carga del ultimo thread creado.
+
+
+Para solucionar este inconveniente se utiliza la clausula schedule
+
+
+completa de la fila 1
+
+  trabajo no se distribuye de
+igual manera entre los distintos threads. Esto genera que se
+sobrecargue el trabajo 
+
+
+:~$ '/home/mario/Escritorio/codigos/traspuesta' 1024 4
+Tiempo en segundos para el thread 0: 0.004504 
+Tiempo en segundos para el thread 3: 0.004522 
+Tiempo en segundos para el thread 2: 0.008282 
+Tiempo en segundos para el thread 1: 0.008673 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 1024 4
+Tiempo en segundos para el thread 3: 0.000562 
+Tiempo en segundos para el thread 2: 0.005751 
+Tiempo en segundos para el thread 0: 0.007591 
+Tiempo en segundos para el thread 1: 0.009724 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuesta' 2048 4
+Tiempo en segundos para el thread 0: 0.034163 
+Tiempo en segundos para el thread 3: 0.034178 
+Tiempo en segundos para el thread 2: 0.038743 
+Tiempo en segundos para el thread 1: 0.040804 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 2048 4
+Tiempo en segundos para el thread 3: 0.004108 
+Tiempo en segundos para el thread 2: 0.022317 
+Tiempo en segundos para el thread 1: 0.044277 
+Tiempo en segundos para el thread 0: 0.054172 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuesta' 4096 4
+Tiempo en segundos para el thread 0: 0.186521 
+Tiempo en segundos para el thread 1: 0.193183 
+Tiempo en segundos para el thread 2: 0.197533 
+Tiempo en segundos para el thread 3: 0.199487 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 4096 4
+Tiempo en segundos para el thread 3: 0.049285 
+Tiempo en segundos para el thread 2: 0.133581 
+Tiempo en segundos para el thread 1: 0.216618 
+Tiempo en segundos para el thread 0: 0.264786 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuesta' 8192 4
+Tiempo en segundos para el thread 3: 0.865803 
+Tiempo en segundos para el thread 0: 0.874630 
+Tiempo en segundos para el thread 1: 0.881260 
+Tiempo en segundos para el thread 2: 0.906058 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 8192 4
+Tiempo en segundos para el thread 3: 0.228796 
+Tiempo en segundos para el thread 2: 0.625447 
+Tiempo en segundos para el thread 1: 0.969096 
+Tiempo en segundos para el thread 0: 1.297376 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuesta' 16384 4
+Tiempo en segundos para el thread 0: 3.914722 
+Tiempo en segundos para el thread 3: 4.069098 
+Tiempo en segundos para el thread 2: 4.369338 
+Tiempo en segundos para el thread 1: 4.372026 
+Resultado correcto
+:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 16384 4
+Tiempo en segundos para el thread 3: 0.915364 
+Tiempo en segundos para el thread 2: 2.594981 
+Tiempo en segundos para el thread 1: 4.171451 
+Tiempo en segundos para el thread 0: 5.624464 
+Resultado correcto
+
+
+Datos de la PC
+- AMD FX(tm)-4100 Quad-Core Processor × 4 
+- 4 nucleos - PC fisica sin hyperthreading ni turboost
+
