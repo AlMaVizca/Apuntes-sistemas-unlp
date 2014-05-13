@@ -2,110 +2,139 @@
 
 * Informe
 
-El ejercicio tiene el problema de que el trabajo no esta distribuido
-de forma uniforme. 
-El funcionamiento esta programado de forma de que la fila N+1 procesa
-menos datos que la fila N.
+El ejercicio tiene el problema de que el trabajo no está distribuido
+de forma uniforme entre los threads. 
 
-Por ejemplo, cuando el indice de filas sea 0, se va a realizar el
-cambio de posicion de N elementos, y cuando el indice de filas sea N-1
-solo se va a realiza el intercambio de posiciones en dos elementos.
+El algoritmo esta programado de forma tal que la fila i+1 procesa
+menos datos que la fila i. Por ejemplo, cuando el indice de filas sea
+0, realizará el intercambio de posición en N elementos, y cuando el
+indice de filas sea N-1 sólo se realizará el intercambio de
+posiciones en dos elementos de la matriz.
 
-Esto genera que el scheduling por defecto que utiliza omp (N/THREADS)
-no sea el mejor.
+#+NAME: Original
+** Original
+Por defecto se utiliza un schedule estatico, con un valor de
+chunk igual a numero de filas a procesar dividido cantidad de threads,
+entonces el thread 0 procesara de la fila 0 hasta la fila
+N/N_Threads. 
 
-Por defecto el numero de filas a procesar es divido entre la cantidad
-de threads, entonces el thread 0 procesara hasta el elemento
-(N/Threads).
-Por lo anteriormente explicado, la carga de este thread es superior a
-la carga del ultimo thread creado.
+Si N = 8 y se utilizan 2 threads, el scheduling resultante sera:
 
+| i      | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| thread | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 2 |
 
-Para solucionar este inconveniente se utiliza la clausula schedule
+Por esto, la carga de este thread es superior a la carga del ultimo
+thread creado, entonces, el scheduling por defecto no es el más
+indicado para utilizar.
 
+* Correccion
+Para solucionar este inconveniente se utiliza la clausula schedule de
+OpenMP. Está directiva permite modificar como se divide el trabajo
+entre los threads. Esta distribución se puede llevar a cabo de
+diferentes maneras: Estática, Dinámica, Guiada, En ejecución y
+Automático.
 
+Consideramos evaluar la clausula Dinámica, Estática y Guiada.
 
-|    N | Tiempo secuencial |     OMP 4 hilos original      | OMP 4 hilos corregido         |
-|------+-------------------+-------------------------------+----------------------------- |
-|      |                   | Tiempo | Speedup | Eficiencia |Tiempo | Speedup | Eficiencia |
-|------+-------------------+--------+---------+------------+-------+---------+------------ |
-|2048|2|3|4|5|6|7|
-|4096|2|3|4|5|6|7|
-|8192|2|3|4|5|6|7|
-|16384|2|3|4|5|6|7|
+#+NAME: Dinamica
+** Dinámica
+Esta clausula permite que cada thread luego de finalizar su
+correspondiente chunk comience a procesar el proximo chunk pendiente
+de ejecución. Es decir que a priori no se puede conocer que chunk
+ejecutará cada thread. 
 
+Sólo para ejemplificar podría ocurrir lo siguiente.
 
+Continuando con el ejemplo:
+Si N = 8 y se utilizan 2 threads, el scheduling (static,1) resultante sera:
 
-completa de la fila 1
+| i      | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| thread | 1 | 2 | 2 | 1 | 1 | 1 | 2 | 1 |
 
-  trabajo no se distribuye de
-igual manera entre los distintos threads. Esto genera que se
-sobrecargue el trabajo 
+*nota:* El chunk que utiliza por defecto cuando no es especificado por
+parametro es 1
 
+#+NAME: Estatica
+** Estatica
+Con la clausula static podemos especificar que cantida de elemento del
+/for/ serán procesados por un thread de manera consecutiva.
 
-:~$ '/home/mario/Escritorio/codigos/traspuesta' 1024 4
-Tiempo en segundos para el thread 0: 0.004504 
-Tiempo en segundos para el thread 3: 0.004522 
-Tiempo en segundos para el thread 2: 0.008282 
-Tiempo en segundos para el thread 1: 0.008673 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 1024 4
-Tiempo en segundos para el thread 3: 0.000562 
-Tiempo en segundos para el thread 2: 0.005751 
-Tiempo en segundos para el thread 0: 0.007591 
-Tiempo en segundos para el thread 1: 0.009724 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuesta' 2048 4
-Tiempo en segundos para el thread 0: 0.034163 
-Tiempo en segundos para el thread 3: 0.034178 
-Tiempo en segundos para el thread 2: 0.038743 
-Tiempo en segundos para el thread 1: 0.040804 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 2048 4
-Tiempo en segundos para el thread 3: 0.004108 
-Tiempo en segundos para el thread 2: 0.022317 
-Tiempo en segundos para el thread 1: 0.044277 
-Tiempo en segundos para el thread 0: 0.054172 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuesta' 4096 4
-Tiempo en segundos para el thread 0: 0.186521 
-Tiempo en segundos para el thread 1: 0.193183 
-Tiempo en segundos para el thread 2: 0.197533 
-Tiempo en segundos para el thread 3: 0.199487 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 4096 4
-Tiempo en segundos para el thread 3: 0.049285 
-Tiempo en segundos para el thread 2: 0.133581 
-Tiempo en segundos para el thread 1: 0.216618 
-Tiempo en segundos para el thread 0: 0.264786 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuesta' 8192 4
-Tiempo en segundos para el thread 3: 0.865803 
-Tiempo en segundos para el thread 0: 0.874630 
-Tiempo en segundos para el thread 1: 0.881260 
-Tiempo en segundos para el thread 2: 0.906058 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 8192 4
-Tiempo en segundos para el thread 3: 0.228796 
-Tiempo en segundos para el thread 2: 0.625447 
-Tiempo en segundos para el thread 1: 0.969096 
-Tiempo en segundos para el thread 0: 1.297376 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuesta' 16384 4
-Tiempo en segundos para el thread 0: 3.914722 
-Tiempo en segundos para el thread 3: 4.069098 
-Tiempo en segundos para el thread 2: 4.369338 
-Tiempo en segundos para el thread 1: 4.372026 
-Resultado correcto
-:~$ '/home/mario/Escritorio/codigos/traspuestaOr' 16384 4
-Tiempo en segundos para el thread 3: 0.915364 
-Tiempo en segundos para el thread 2: 2.594981 
-Tiempo en segundos para el thread 1: 4.171451 
-Tiempo en segundos para el thread 0: 5.624464 
-Resultado correcto
+Continuando con el ejemplo:
+Si N = 8 y se utilizan 2 threads, el scheduling (static,1) resultante sera:
+
+| i      | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| thread | 1 | 2 | 1 | 2 | 1 | 2 | 1 | 2 |
 
 
-Datos de la PC
-- AMD FX(tm)-4100 Quad-Core Processor × 4 
-- 4 nucleos - PC fisica sin hyperthreading ni turboost
+#+NAME: Guiada
+** Guiada
+La clausula guided es similar a la clausula dynamic, con la
+diferencia de que el procesamiento se agrupa en bloques y el tamaño
+del bloque decrece a medida que se asigna trabajo a un thread.
+Por defecto el tamaño inicial de bloque es N/N_threads.
 
+Solo para ejemplificar podría ocurrir lo siguiente.
+
+Continuando con el ejemplo:
+Si N = 8 y se utilizan 2 threads, el scheduling (guided,1) resultante sera:
+
+| i      | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| thread | 1 | 1 | 1 | 1 | 2 | 2 | 1 | 2 |
+
+*nota:* En este caso el parametro que se le pasa al schedule significa
+el tamaño minimo de chunk que se le asignara a un thread.
+
+
+* Tablas 
+#+NAME: ResultadosOriginal
+** OMP 4 hilos original
+|    N | Tiempo Secuencial |   Tiempo |   Speedup | Eficiencia |
+|------+-------------------+----------+-----------+------------|
+| 2048 |          0.068505 | 0.038079 | 1.7990231 | 0.44975578 |
+| 4096 |          0.284406 | 0.157106 | 1.8102810 | 0.45257025 |
+| 8192 |          1.163672 | 0.625998 | 1.8589069 | 0.46472673 |
+#+TBLFM: $4=($2/$3)::$5=($4/4)
+[[Original][Volver a original]]
+
+#+NAME: ResultadosDinamica
+** OMP 4 hilos corregido - dinamica
+|    N | Tiempo Secuencial |   Tiempo |   Speedup | Eficiencia |
+|------+-------------------+----------+-----------+------------|
+| 2048 |          0.068505 | 0.019999 | 3.4254213 | 0.85635533 |
+| 4096 |          0.284406 | 0.093363 | 3.0462389 | 0.76155973 |
+| 8192 |          1.163672 | 0.427885 | 2.7195905 | 0.67989763 |
+#+TBLFM: $4=($2/$3)::$5=($4/4)
+[[Dinamica][Volver a dinamica]]
+
+#+NAME: ResultadosEstatica
+** OMP 4 hilos corregido - estatica
+|    N | Tiempo Secuencial |   Tiempo |   Speedup | Eficiencia |
+|------+-------------------+----------+-----------+------------|
+| 2048 |          0.068505 | 0.020757 | 3.3003324 |  0.8250831 |
+| 4096 |          0.284406 | 0.095250 | 2.9858898 | 0.74647245 |
+| 8192 |          1.163672 | 0.433647 | 2.6834545 | 0.67086363 |
+#+TBLFM: $4=($2/$3)::$5=($4/4)
+[[Estatica][Volver a estatica]]
+
+#+NAME: ResultadosGuiada
+** OMP 4 hilos corregido - guiada
+|    N | Tiempo Secuencial |   Tiempo |   Speedup | Eficiencia |
+|------+-------------------+----------+-----------+------------|
+| 2048 |          0.068505 | 0.039383 | 1.7394561 | 0.43486403 |
+| 4096 |          0.284406 | 0.159459 | 1.7835682 | 0.44589205 |
+| 8192 |          1.163672 | 0.649765 | 1.7909121 | 0.44772803 |
+#+TBLFM: $4=($2/$3)::$5=($4/4)
+[[Guiada][Volver a guiada]]
+
+* Conclusión
+
+La ejecucion con la clausula dynamic retorno mejores tiempos de
+eficiencia. Se observa que a medida que crece N la eficiencia
+disminuye. Esta baja podria ser compensada incrementando el tamaño de
+los chunks, pero, se observo que en ese caso bajo la eficiencia para
+los N más chicos.
+
+
+* Hardware
+- Se utilizaron las máquinas de la sala de postgrado.
+- Para compilar todos los archivos se adjunta un archivo Makefile.
