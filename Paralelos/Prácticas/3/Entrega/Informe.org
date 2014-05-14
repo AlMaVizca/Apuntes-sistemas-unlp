@@ -13,10 +13,10 @@ posiciones en dos elementos de la matriz.
 
 #+NAME: Original
 ** Original
-Por defecto se utiliza un schedule estatico, con un valor de
-chunk igual a numero de filas a procesar dividido cantidad de threads,
-entonces el thread 0 procesara de la fila 0 hasta la fila
-N/N_Threads. 
+Por defecto la implementación instalada en las computadoras de
+postgrado utiliza un schedule estatico, con un valor de chunk igual
+a numero de filas a procesar dividido cantidad de threads, entonces el
+thread 0 procesara de la fila 0 hasta la fila N/N_Threads. 
 
 Si N = 8 y se utilizan 2 threads, el scheduling resultante sera:
 
@@ -27,7 +27,7 @@ Por esto, la carga de este thread es superior a la carga del ultimo
 thread creado, entonces, el scheduling por defecto no es el más
 indicado para utilizar.
 
-* Correccion
+* Corrección
 Para solucionar este inconveniente se utiliza la clausula schedule de
 OpenMP. Está directiva permite modificar como se divide el trabajo
 entre los threads. Esta distribución se puede llevar a cabo de
