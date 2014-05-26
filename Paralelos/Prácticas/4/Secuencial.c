@@ -24,41 +24,33 @@ int main(int argc,char*argv[]){
   B=(double*)malloc(sizeof(double)*N*N);
 
   //Inicializa la matriz 
-  for(i=0;i<N;i++){
-   for(j=0;j<N;j++){
-	A[i*N+j]= 1.0;
-   }
+  for(i=0;i<N*N;i++){
+	A[i]= 1.0;
   }   
  
  timetick = dwalltime();
- min = A[1*N+1];
- max = A[1*N+1];
-  for(i=0;i<N;i++){
-   for(j=0;j<N;j++){
-       if (A[i*N+j]<min) min=A[i*N+j];
-       if (A[i*N+j]<max) max=A[i*N+j];
-       avg+=A[i*N+j];
-   }
+ min = A[1];
+ max = A[1];
+  for(i=0;i<N*N;i++){
+       if (A[i]<min) min=A[i];
+       if (A[i]<max) max=A[i];
+       avg+=A[i];
   }
 
   avg/=N;
 
-  for(i=0;i<N;i++){
-   for(j=0;j<N;j++){
-       if (A[i*N+j]<avg) B[i*N+j]=min;
-       if (A[i*N+j]>avg) B[i*N+j]=max;
-       if (A[i*N+j]==avg) B[i*N+j]=avg;
-   }
+  for(i=0;i<N*N;i++){
+       if (A[i]<avg) B[i]=min;
+       if (A[i]>avg) B[i]=max;
+       if (A[i]==avg) B[i]=avg;
   }
 
 
     printf("Tiempo en segundos: %f \n", dwalltime() - timetick);
 
   //Chequea los resultados
-  for(i=0;i<N;i++){
-   for(j=0;j<N;j++){
-	check= check&&(B[i*N+j]==1.0);
-   }
+  for(i=0;i<N*N;i++){
+	check= check&&(B[i]==1.0);
   }   
 
   if(check){
