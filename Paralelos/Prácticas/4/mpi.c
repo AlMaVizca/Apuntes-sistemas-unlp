@@ -1,14 +1,39 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<mpi.h>
 
 /* Time in seconds from some point in the past */
 double dwalltime();
 
+int n_proc,N,chunk;
+double *values;
+
+void first_work(int myid){
+    MPI_Status status;
+    double *buffer;
+    // = (double*)malloc(sizeof(double)*chunk*N);
+    MPI_Recv(buffer, chunk*N, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+    min = buffer[1];
+    max = buffer[1];
+    for(i=0;i<chunk*N;i++){
+       if (buffer[i]<min) min=buffer[i];
+       if (buffer[i]<max) max=buffer[i];
+       avg+=buffer[i];
+    }
+
+    values[0] = min;
+    values[1] = max;
+    values[2] = avg;
+
+    MPI_Send(&values, 3, MPI_DOUBLE, 0,  MPI_ANY_TAG, MPI_COMM_WORLD);
+    
+}
+
 
 int main(int argc,char*argv[]){
-    double *A,*B;
+ double *A,*B;
  double min,max,avg=0; 
- int i,N;
+ int i;
  int check=1;
  double timetick;
 
@@ -22,13 +47,31 @@ int main(int argc,char*argv[]){
  //Aloca memoria para las matrices
   A=(double*)malloc(sizeof(double)*N*N);
   B=(double*)malloc(sizeof(double)*N*N);
-
+  // Array to communicate min, max and average
+  values = (double*)malloc(sizeof(double)*3);
   //Inicializa la matriz 
   for(i=0;i<N*N;i++){
 	A[i]= 1.0;
   }   
  
+  int id;
  timetick = dwalltime();
+ MPI_Init(&argc, &argv);
+ MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
+ MPI_Comm_rank(MPI_COMM_WORLD, &id);
+ chunk=N/n_proc;
+
+ if (myid == 0){
+     int worker_id;
+
+     for(worker_id=1;worker_id<n_proc;worker_id++)
+	 MPI_Send (&A[chunk*worker_id], chunk, MPI_DOUBLE, worker_id, MPI_ANY_TAG, MPI_COMM_WORLD);
+  }
+ //else{//MASTER is our master now
+ //  worker(myid);
+ // }
+
+ 
  min = A[1];
  max = A[1];
   for(i=0;i<N*N;i++){
@@ -46,6 +89,7 @@ int main(int argc,char*argv[]){
   }
 
 
+ MPI_Finalize();
     printf("Tiempo en segundos: %f \n", dwalltime() - timetick);
 
   //Chequea los resultados
