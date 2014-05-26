@@ -2,40 +2,24 @@
 #include<stdlib.h>
 #include<mpi.h>
 
+#define MANAGER 0
+
 /* Time in seconds from some point in the past */
 double dwalltime();
 
-int n_proc,N,chunk;
-double *values;
+int j,n_proc,N,chunk;
 
-void first_work(int myid){
-    MPI_Status status;
-    double *buffer;
-    // = (double*)malloc(sizeof(double)*chunk*N);
-    MPI_Recv(buffer, chunk*N, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-    min = buffer[1];
-    max = buffer[1];
-    for(i=0;i<chunk*N;i++){
-       if (buffer[i]<min) min=buffer[i];
-       if (buffer[i]<max) max=buffer[i];
-       avg+=buffer[i];
-    }
-
-    values[0] = min;
-    values[1] = max;
-    values[2] = avg;
-
-    MPI_Send(&values, 3, MPI_DOUBLE, 0,  MPI_ANY_TAG, MPI_COMM_WORLD);
-    
+void first_work(){
 }
 
 
 int main(int argc,char*argv[]){
  double *A,*B;
- double min,max,avg=0; 
+ double min,max,avg_sum; 
  int i;
  int check=1;
  double timetick;
+ double *buffer, *values;
 
  //Controla los argumentos al programa
   if (argc < 2){
@@ -47,8 +31,11 @@ int main(int argc,char*argv[]){
  //Aloca memoria para las matrices
   A=(double*)malloc(sizeof(double)*N*N);
   B=(double*)malloc(sizeof(double)*N*N);
+  buffer=(double*)malloc(sizeof(double)*chunk*N);
   // Array to communicate min, max and average
-  values = (double*)malloc(sizeof(double)*3);
+  values=(double*)malloc(sizeof(double)*3*N);
+
+
   //Inicializa la matriz 
   for(i=0;i<N*N;i++){
 	A[i]= 1.0;
@@ -56,41 +43,37 @@ int main(int argc,char*argv[]){
  
   int id;
  timetick = dwalltime();
+
  MPI_Init(&argc, &argv);
  MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
  MPI_Comm_rank(MPI_COMM_WORLD, &id);
+ MPI_Status status;
  chunk=N/n_proc;
 
- if (myid == 0){
-     int worker_id;
+ MPI_Scatter (A, chunk*N, MPI_DOUBLE, buffer, chunk*N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-     for(worker_id=1;worker_id<n_proc;worker_id++)
-	 MPI_Send (&A[chunk*worker_id], chunk, MPI_DOUBLE, worker_id, MPI_ANY_TAG, MPI_COMM_WORLD);
-  }
- //else{//MASTER is our master now
- //  worker(myid);
- // }
-
+ MPI_AllReduce (&buffer, &avg_sum, chunk*N, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+ MPI_AllReduce (&buffer, &values[0], chunk*N, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD);
+ MPI_AllReduce (&buffer, &values[1], chunk*N, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
  
- min = A[1];
- max = A[1];
-  for(i=0;i<N*N;i++){
-       if (A[i]<min) min=A[i];
-       if (A[i]<max) max=A[i];
-       avg+=A[i];
+ values[2]=avg_sum/N;
+
+
+ MPI_Scatter (A, chunk*N, MPI_DOUBLE, buffer, chunk*N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+ for(i=0;i<chunk*N;i++){
+    if (buffer[i]<avg) buffer[i]=min;
+    if (buffer[i]>avg) buffer[i]=max;
+    if (buffer[i]==avg) buffer[i]=avg;
   }
 
-  avg/=N;
 
-  for(i=0;i<N*N;i++){
-       if (A[i]<avg) B[i]=min;
-       if (A[i]>avg) B[i]=max;
-       if (A[i]==avg) B[i]=avg;
-  }
+ MPI_Gather(buffer, chunk*N, MPI_DOUBLE, B, chunk*N, chunk*N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
 
 
  MPI_Finalize();
-    printf("Tiempo en segundos: %f \n", dwalltime() - timetick);
+ printf("Tiempo en segundos: %f \n", dwalltime() - timetick);
 
   //Chequea los resultados
   for(i=0;i<N*N;i++){
