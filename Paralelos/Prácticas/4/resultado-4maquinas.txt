@@ -1,0 +1,24 @@
+###paralelo 4maquinas 2048
+Tiempo en segundos: 1.556375 
+Tiempo en segundos: 1.593860 
+Tiempo en segundos: 1.568444 
+Tiempo en segundos: 1.567864 
+Resultado correcto
+###paralelo 4maquinas 4096
+Tiempo en segundos: 6.295097 
+Tiempo en segundos: 6.381031 
+Tiempo en segundos: 6.316127 
+Tiempo en segundos: 6.318705 
+Resultado correcto
+###paralelo 4maquinas 8192
+Tiempo en segundos: 25.297980 
+Tiempo en segundos: 25.353266 
+Tiempo en segundos: 25.303319 
+Tiempo en segundos: 25.310416 
+Resultado correcto
+### 16384
+Tiempo en segundos: 101.216631 
+Tiempo en segundos: 101.674330 
+Tiempo en segundos: 101.245082 
+Tiempo en segundos: 101.266075 
+Resultado correcto
