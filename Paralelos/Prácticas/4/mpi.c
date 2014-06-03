@@ -7,10 +7,10 @@
 /* Time in seconds from some point in the past */
 double dwalltime();
 
-int j,n_proc,N,chunk;
+int N,chunk;
 
 int main(int argc,char*argv[]){
- double *A,*B, *Buffer;
+ double *A,*B;
  double min,max,avg,avg_sum; 
  int i;
  int check=1;
@@ -27,27 +27,34 @@ int main(int argc,char*argv[]){
  MPI_Comm_rank(MPI_COMM_WORLD, &worker_id);
  MPI_Status status;
  chunk=(N*N)/n_proc;
- Buffer=(double*)malloc(sizeof(double)*chunk*N);
- A=(double*)malloc(sizeof(double)*N*N);
- B=(double*)malloc(sizeof(double)*N*N);
 
- MPI_Scatter (A, chunk, MPI_DOUBLE, Buffer, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+ if(worker_id == MANAGER){
+     A=(double*)malloc(sizeof(double)*N*N);
+     B=(double*)malloc(sizeof(double)*N*N);
+ }
+ else{
+     A=(double*)malloc(sizeof(double)*chunk);
+     B=(double*)malloc(sizeof(double)*chunk);
+ }
+
+ MPI_Scatter (A, chunk, MPI_DOUBLE, A, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
   for(i=0;i<chunk;i++){
-	Buffer[i]= 1.0;
+	A[i]= 1.0;
   }   
+
  
- MPI_Gather(Buffer, chunk, MPI_DOUBLE, A, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+ MPI_Gather(A, chunk, MPI_DOUBLE, A, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
  timetick = dwalltime();
 
- min=Buffer[1];
- min=Buffer[1];
+ min=A[0];
+ max=A[0];
  avg=0;
   for(i=0;i<chunk;i++){
-    if (Buffer[i]<max) max=Buffer[i];
-    if (min<Buffer[i]) min=Buffer[i];
-    avg+=Buffer[i];
+    if (A[i]<max) max=A[i];
+    if (min<A[i]) min=A[i];
+    avg+=A[i];
   }   
  
   MPI_Allreduce(&avg, &avg_sum, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
@@ -55,43 +62,36 @@ int main(int argc,char*argv[]){
   MPI_Allreduce(&max, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
  
   avg=avg_sum/(N*N);
- 
- MPI_Scatter (A, chunk, MPI_DOUBLE, Buffer, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+ MPI_Scatter (A, chunk, MPI_DOUBLE, B, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
  for(i=0;i<chunk;i++){
-    if (Buffer[i]<avg) Buffer[i]=min;
-    if (Buffer[i]>avg) Buffer[i]=max;
-    if (Buffer[i]==avg) Buffer[i]=avg;
+    if (B[i]<avg) B[i]=min;
+    if (B[i]>avg) B[i]=max;
+    if (B[i]==avg) B[i]=avg;
   }
 
 
- MPI_Gather(Buffer, chunk, MPI_DOUBLE, B, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-
-
-
+ MPI_Gather(B, chunk, MPI_DOUBLE, B, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
  printf("Tiempo en segundos: %f \n", dwalltime() - timetick);
 
   //Chequea los resultados
-
- MPI_Scatter (A, chunk, MPI_DOUBLE, Buffer, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+ MPI_Scatter (B, chunk, MPI_DOUBLE, B, chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
  for(i=0;i<chunk;i++){
-	check= check&&(Buffer[i]==1.0);
+	check= check&&(B[i]==1.0);
   }
 
   MPI_Allreduce(&check, &check, 1, MPI_INT, MPI_LAND, MPI_COMM_WORLD);
-
-  if(worker_id == MANAGER){
+   if(worker_id == MANAGER)
   if(check){
-      printf("Resultado correcto");
+      printf("Resultado correcto\n");
   }else{
    printf("Resultado erroneo\n");
   }
-  }
  free(A);
  free(B);
- free(Buffer);
  MPI_Finalize();
  return(0);
 }
