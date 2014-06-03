@@ -1,0 +1,25 @@
+###paralelo 2maquinas 2048
+Tiempo en segundos: 4.946691 
+Tiempo en segundos: 3.586679 
+Tiempo en segundos: 3.242881 
+Tiempo en segundos: 3.266733 
+Resultado correcto
+###paralelo 2maquinas 4096
+Tiempo en segundos: 11.458456 
+Tiempo en segundos: 11.335841 
+Tiempo en segundos: 11.456122 
+Tiempo en segundos: 11.659558 
+Resultado correcto
+###paralelo 2maquinas 8192
+Tiempo en segundos: 45.848831 
+Tiempo en segundos: 45.985576 
+Tiempo en segundos: 45.859956 
+Tiempo en segundos: 45.868800 
+Resultado correcto
+###paralelo 2maquinas 16384
+### 16384
+Tiempo en segundos: 183.518629 
+Tiempo en segundos: 183.441598 
+Tiempo en segundos: 183.519881 
+Tiempo en segundos: 183.695907 
+Resultado correcto
