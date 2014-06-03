@@ -1,0 +1,12 @@
+La estrategia utilizada en el caso del algoritmo secuencial y de mpi fue realizarlo a traves de vectores. 
+( Poné lo que le dijiste/dijo adrian hoy que me olvidé ).
+En el secuencial respeta el enunciado de armar los valores de acuerdo a que: 
+- Si el elemento a i,j < promedio(A) entonces b i,j = min(A).
+- Si el elemento a i,j > promedio(A) entonces b i,j = max(A).
+- Si el elemento a i,j = promedio(A) entonces b i,j = promedio(A).
+El caso del algoritmo mpi sigue la misma estrategia, en este caso se ha utilizado 
+comunicación colectiva, lo que nos permite la transferencia de datos entre todos 
+los procesos que pertenecen a un grupo específico, así como un diseño modular, 
+son ejemplos, funciones tales como MPI_Scatter, MPI_Gather y MPI_Allreduce.
+
+Las pruebas fueron efectuadas en las pc de sala de postgrado de la facultad.
