@@ -1,0 +1,12 @@
+###secuencial 2048
+Tiempo en segundos: 0.052820 
+Resultado correcto
+###secuencial 4096
+Tiempo en segundos: 0.238790 
+Resultado correcto
+###secuencial 8192
+Tiempo en segundos: 1.027831 
+Resultado correcto
+###secuencial 16384
+Tiempo en segundos: 4.179818 
+Resultado correcto
