@@ -1,0 +1,24 @@
+###paralelo 1mpi 2048
+Tiempo en segundos: 0.032073 
+Tiempo en segundos: 0.032126 
+Tiempo en segundos: 0.032138 
+Tiempo en segundos: 0.032077 
+Resultado correcto
+###paralelo 1mpi 4096
+Tiempo en segundos: 0.126686 
+Tiempo en segundos: 0.126734 
+Tiempo en segundos: 0.126693 
+Tiempo en segundos: 0.126688 
+Resultado correcto
+###paralelo 1mpi 8192
+Tiempo en segundos: 0.506245 
+Tiempo en segundos: 0.506195 
+Tiempo en segundos: 0.506286 
+Tiempo en segundos: 0.506247 
+Resultado correcto
+###paralelo 1mpi 16384
+Tiempo en segundos: 2.034707 
+Tiempo en segundos: 2.034698 
+Tiempo en segundos: 2.036678 
+Tiempo en segundos: 2.036680 
+Resultado correcto
