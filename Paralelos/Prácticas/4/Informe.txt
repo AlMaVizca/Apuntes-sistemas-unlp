@@ -23,6 +23,13 @@ Table of Contents
 1 El problema
 ═════════════
 
+  Dado el problema que dada una matriz A de NxN obtenga el
+  valor máximo, el valor mínimo y valor promedio de A, 
+  luego debe armar una matriz B de la siguiente forma:
+  - Si el elemento a i,j < promedio(A) entonces b i,j = min(A).
+  - Si el elemento a i,j > promedio(A) entonces b i,j = max(A).
+  - Si el elemento a i,j = promedio(A) entonces b i,j = promedio(A).
+
   Teniendo en cuenta que el problema requiere analizar todos los
   elementos de la matriz, optamos por procesar la misma elemento a
   elemento utilizando un unico for.
@@ -33,21 +40,24 @@ Table of Contents
 
   El algoritmo secuencial en primera instancia recorre toda la matriz A
   con el objetivo de calcular el minimo, maximo y la suma de todos los
-  elementos, para que, luego con estos datos sea posible completar la
-  matriz B.
-
+  elementos, para que luego con estos datos, y utilizando el promedio de
+  la suma, sea posible completar toda la matriz B.
 
 3 MPI
 ═════
 
   El algoritmo MPI respeta la forma de procesar las matrices con la
   diferencia de que cada proceso se encargara de analizar solo una
-  porcion de la matriz. Para esto se utiliza la sentencia MPI_Scatter
-  que nos permite dividir los elemetos a procesar entre todos los
-  procesos.  Respetando el calculo que se realiza en el algoritmo
-  secuencial, cada proceso buscara un minimo, maximo y suma de todos los
-  elementos que le fueron asignados por la libreria MPI.  Para poder
-  determinar los valores finales de cada uno de estos calculos
+  porcion de la matriz. Para ello hemos utilizando comunicaciones 
+  colectivas, lo que nos permite la transferencia de datos entre todos 
+  los procesos que pertenecen a un grupo específico, así como un diseño 
+  modular, son ejemplos, funciones tales como MPI_Scatter, MPI_Gather 
+  y MPI_Allreduce. 
+  La sentencia MPI_Scatter que nos permite dividir los elemetos a 
+  procesar entre todos los procesos. Respetando el calculo que se realiza
+  en el algoritmo secuencial, cada proceso buscara un minimo, maximo y 
+  suma de todos los elementos que le fueron asignados por la libreria MPI. 
+  Para poder determinar los valores finales de cada uno de estos calculos
   realizados se utiliza MPI_Allreduce, que se encargara de comunicar y
   dejar los mismos resultados en todos los procesos.  Luego de encontrar
   minimos, maximos y promedios, datos que se almacenan en cada proceso,
