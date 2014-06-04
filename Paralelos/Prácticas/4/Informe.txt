@@ -1,12 +1,63 @@
-La estrategia utilizada en el caso del algoritmo secuencial y de mpi fue realizarlo a traves de vectores. 
-( Poné lo que le dijiste/dijo adrian hoy que me olvidé ).
-En el secuencial respeta el enunciado de armar los valores de acuerdo a que: 
-- Si el elemento a i,j < promedio(A) entonces b i,j = min(A).
-- Si el elemento a i,j > promedio(A) entonces b i,j = max(A).
-- Si el elemento a i,j = promedio(A) entonces b i,j = promedio(A).
+#+Author: Villalba, Vizcaino
+#+Title: Entrega 4
+
+* El problema
+
+Teniendo en cuenta que el problema requiere analizar todos los
+elementos de la matriz, optamos por procesar la misma elemento a
+elemento utilizando un unico for.
+
+* Secuencial
+
+El tiempo de ejecucion del algoritmo secuencial es ??
+
+
+
+* MPI
+
+Deberiamos explicar como influye la comunicacion en el procesamiento
+de datos
+
 El caso del algoritmo mpi sigue la misma estrategia, en este caso se ha utilizado 
 comunicación colectiva, lo que nos permite la transferencia de datos entre todos 
 los procesos que pertenecen a un grupo específico, así como un diseño modular, 
 son ejemplos, funciones tales como MPI_Scatter, MPI_Gather y MPI_Allreduce.
 
-Las pruebas fueron efectuadas en las pc de sala de postgrado de la facultad.
+
+* Resultados
+
+** Tablas
+#+tblname:  MPI 4px1M
+|       | Tiempo Secuencial | Tiempo MPI |   Speedup | Efficiency |
+|-------+-------------------+------------+-----------+------------|
+|  2048 |          0.052820 |   0.032138 | 1.6435372 |  0.4108843 |
+|  4096 |          0.238790 |   0.126734 | 1.8841826 | 0.47104565 |
+|  8192 |          1.027831 |   0.506247 | 2.0302955 | 0.50757388 |
+| 16384 |          4.179818 |   2.036680 | 2.0522704 |  0.5130676 |
+#+TBLFM: $4=($2/$3)::$5=$4/4
+
+
+#+tblname:  MPI 4px2M
+|       | Tiempo Secuencial | Tiempo MPI |     Speedup |   Efficiency |
+|-------+-------------------+------------+-------------+--------------|
+|  2048 |          0.052820 |   4.946691 | 0.010677845 | 2.6694613e-3 |
+|  4096 |          0.238790 |  11.659558 | 0.020480193 | 5.1200483e-3 |
+|  8192 |          1.027831 |  45.985576 | 0.022351161 | 5.5877903e-3 |
+| 16384 |          4.179818 | 183.695907 | 0.022754007 | 5.6885018e-3 |
+#+TBLFM: $4=($2/$3)::$5=$4/4
+
+#+tblname:  MPI 4px4M
+|       | Tiempo Secuencial | Tiempo MPI |     Speedup |   Efficiency |
+|-------+-------------------+------------+-------------+--------------|
+|  2048 |          0.052820 |   1.593860 | 0.033139673 | 8.2849183e-3 |
+|  4096 |          0.238790 |   6.328705 | 0.037731258 | 9.4328145e-3 |
+|  8192 |          1.027831 |  25.303319 | 0.040620402 |  0.010155101 |
+| 16384 |          4.179818 | 101.674330 | 0.041109865 |  0.010277466 |
+#+TBLFM: $4=($2/$3)::$5=$4/4
+
+
+
+** Maquinas utilizadas
+
+Los calculos se realizaron utilizando las maquinas de la sala de
+postgrado.

@@ -93,7 +93,7 @@ el tamaño minimo de chunk que se le asignara a un thread.
 | 2048 |          0.068505 | 0.038079 | 1.7990231 | 0.44975578 |
 | 4096 |          0.284406 | 0.157106 | 1.8102810 | 0.45257025 |
 | 8192 |          1.163672 | 0.625998 | 1.8589069 | 0.46472673 |
-#+TBLFM: $4=($2/$3)::$5=($4/4)
+#+TBLFM: $4=($2/$3)::$5=($4/4)::@5$3=($1+$2)
 [[Original][Volver a original]]
 
 #+NAME: ResultadosDinamica
