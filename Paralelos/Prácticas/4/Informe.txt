@@ -114,10 +114,8 @@ _________________
 
   Los resultados muestran que el tiempo de ejecucion del algoritmo y el
   volumen de datos procesados en una sola computadora, fue mejor que
-  realizando el calculo distribuido. Esto significa que la comunicacion
-  y sincronizacion de procesos solo deben ser ten
-
-  El procesamiento paralelo y distribuido debe ser consi
+  realizando el calculo distribuido. Esto significa que intercambiar
+  muchos datos no es aconsejable.
 
 
 4.3 Maquinas utilizadas
