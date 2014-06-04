@@ -1,31 +1,35 @@
-			  ━━━━━━━━━━━━━━━━━━━━
+			  ____________________
+
 			       ENTREGA 4
 
-
 			   Villalba, Vizcaino
-			  ━━━━━━━━━━━━━━━━━━━━
+			  ____________________
 
 
 Table of Contents
-─────────────────
+_________________
 
 1 El problema
 2 Secuencial
 3 MPI
 4 Resultados
 .. 4.1 Tablas
-.. 4.2 Maquinas utilizadas
+..... 4.1.1 MPI 4px1M
+..... 4.1.2 MPI 4px2M
+..... 4.1.3 MPI 4px4M
+.. 4.2 Conclusiones
+.. 4.3 Maquinas utilizadas
 
 
 
 
 
 1 El problema
-═════════════
+=============
 
-  Dado el problema que dada una matriz A de NxN obtenga el
-  valor máximo, el valor mínimo y valor promedio de A, 
-  luego debe armar una matriz B de la siguiente forma:
+  Dado el problema que dada una matriz A de NxN obtenga el valor máximo,
+  el valor mínimo y valor promedio de A, luego debe armar una matriz B
+  de la siguiente forma:
   - Si el elemento a i,j < promedio(A) entonces b i,j = min(A).
   - Si el elemento a i,j > promedio(A) entonces b i,j = max(A).
   - Si el elemento a i,j = promedio(A) entonces b i,j = promedio(A).
@@ -36,80 +40,88 @@ Table of Contents
 
 
 2 Secuencial
-════════════
+============
 
   El algoritmo secuencial en primera instancia recorre toda la matriz A
   con el objetivo de calcular el minimo, maximo y la suma de todos los
   elementos, para que luego con estos datos, y utilizando el promedio de
-  la suma, sea posible completar toda la matriz B.
+  la suma, sea posible completar la matriz B.
+
 
 3 MPI
-═════
+=====
 
   El algoritmo MPI respeta la forma de procesar las matrices con la
   diferencia de que cada proceso se encargara de analizar solo una
-  porcion de la matriz. Para ello hemos utilizando comunicaciones 
-  colectivas, lo que nos permite la transferencia de datos entre todos 
-  los procesos que pertenecen a un grupo específico, así como un diseño 
-  modular, son ejemplos, funciones tales como MPI_Scatter, MPI_Gather 
-  y MPI_Allreduce. 
-  La sentencia MPI_Scatter que nos permite dividir los elemetos a 
-  procesar entre todos los procesos. Respetando el calculo que se realiza
-  en el algoritmo secuencial, cada proceso buscara un minimo, maximo y 
-  suma de todos los elementos que le fueron asignados por la libreria MPI. 
-  Para poder determinar los valores finales de cada uno de estos calculos
-  realizados se utiliza MPI_Allreduce, que se encargara de comunicar y
-  dejar los mismos resultados en todos los procesos.  Luego de encontrar
-  minimos, maximos y promedios, datos que se almacenan en cada proceso,
-  se realiza la comunicacion nuevamente de datos para completar la matiz
-  B. Como cada proceso genera una parte de la solucion se realiza la
-  recoleccion de datos mediante MPI_Gather.
-
-
-
-
-
-  Deberiamos explicar como influye la comunicacion en el procesamiento
-  de datos
+  porcion de la matriz. Para ello hemos utilizando comunicaciones
+  colectivas, lo que nos permite la transferencia de datos entre todos
+  los procesos que pertenecen a un grupo específico, así como un diseño
+  modular, son ejemplos, funciones tales como MPI_Scatter, MPI_Gather y
+  MPI_Allreduce.  La sentencia MPI_Scatter que nos permite dividir los
+  elementos a procesar entre todos los procesos. Respetando el calculo
+  que se realiza en el algoritmo secuencial, cada proceso buscara un
+  minimo, un maximo y calculara la suma de todos los elementos que le
+  fueron asignados por la libreria MPI. Para poder determinar los
+  valores finales de cada uno de estos calculos realizados se utiliza
+  MPI_Allreduce, que se encargara de comunicar y dejar los mismos
+  resultados en todos los procesos. Luego de encontrar minimos, maximos
+  y promedios, se realiza la comunicacion nuevamente de datos para
+  completar la matriz B. Como cada proceso genera una parte de la
+  solucion se realiza la recoleccion de datos mediante MPI_Gather.
 
 
 4 Resultados
-════════════
+============
 
 4.1 Tablas
-──────────
+~~~~~~~~~~
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4.1.1 MPI 4px1M
+---------------
+
           Tiempo Secuencial  Tiempo MPI    Speedup  Efficiency 
-  ─────────────────────────────────────────────────────────────
+  -------------------------------------------------------------
     2048           0.052820    0.032138  1.6435372   0.4108843 
     4096           0.238790    0.126734  1.8841826  0.47104565 
     8192           1.027831    0.506247  2.0302955  0.50757388 
    16384           4.179818    2.036680  2.0522704   0.5130676 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4.1.2 MPI 4px2M
+---------------
+
           Tiempo Secuencial  Tiempo MPI      Speedup    Efficiency 
-  ─────────────────────────────────────────────────────────────────
+  -----------------------------------------------------------------
     2048           0.052820    4.946691  0.010677845  2.6694613e-3 
     4096           0.238790   11.659558  0.020480193  5.1200483e-3 
     8192           1.027831   45.985576  0.022351161  5.5877903e-3 
    16384           4.179818  183.695907  0.022754007  5.6885018e-3 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4.1.3 MPI 4px4M
+---------------
+
           Tiempo Secuencial  Tiempo MPI      Speedup    Efficiency 
-  ─────────────────────────────────────────────────────────────────
+  -----------------------------------------------------------------
     2048           0.052820    1.593860  0.033139673  8.2849183e-3 
     4096           0.238790    6.328705  0.037731258  9.4328145e-3 
     8192           1.027831   25.303319  0.040620402   0.010155101 
    16384           4.179818  101.674330  0.041109865   0.010277466 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-4.2 Maquinas utilizadas
-───────────────────────
+4.2 Conclusiones
+~~~~~~~~~~~~~~~~
+
+  Los resultados muestran que el tiempo de ejecucion del algoritmo y el
+  volumen de datos procesados en una sola computadora, fue mejor que
+  realizando el calculo distribuido. Esto significa que la comunicacion
+  y sincronizacion de procesos solo deben ser ten
+
+  El procesamiento paralelo y distribuido debe ser consi
+
+
+4.3 Maquinas utilizadas
+~~~~~~~~~~~~~~~~~~~~~~~
 
   Los calculos se realizaron utilizando las maquinas de la sala de
   postgrado.
