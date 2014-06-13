@@ -8,7 +8,7 @@ double dwalltime();
 
 
 int main(int argc,char*argv[]){
-    double *A,*B,*C,*W;
+    double *A,*B,*C,*W,*results;
  int i,j,k,N,tid;
  int check=1;
  double temp;
@@ -28,7 +28,6 @@ int main(int argc,char*argv[]){
   B=(double*)malloc(sizeof(double)*N*N);
   C=(double*)malloc(sizeof(double)*N*N);
   W=(double*)malloc(sizeof(double)*N*N);
-
   //Inicializa la matriz 
   for(i=0;i<N;i++){
 	for(j=0;j<N;j++){
@@ -39,14 +38,14 @@ int main(int argc,char*argv[]){
     }
   }   
  
-  #pragma omp parallel default(none) private(i,j,temp,timetick,tid)   shared(A,B,C,W,N)
+  double total;
+  #pragma omp parallel default(none) private(i,j,total,temp,timetick,tid) shared(A,B,C,W,N)
 {
   tid= omp_get_thread_num();
   timetick = dwalltime();
 
-  double total = 0;
   //Calcula la media ponderada
-  #pragma omp for private(i,j,temp,total) schedule(static,1) nowait
+  #pragma omp for private(i,j) schedule(static,1) nowait
   for(i=0;i<N;i++){
 	for(j=0;j<N;j++){
 	   temp += W[i*N+j];
@@ -56,7 +55,7 @@ int main(int argc,char*argv[]){
 
   total/=temp;
 
-  #pragma omp for private(i,j,k,total) schedule(static,1) nowait
+  #pragma omp for private(i,j,k) schedule(static,1) nowait
   //Realiza la ecuacion general
   for(i=0;i<N;i++){
 	for(j=0;j<N;j++){
@@ -69,7 +68,7 @@ int main(int argc,char*argv[]){
     printf("Tiempo en segundos para el thread %d: %f \n", tid,dwalltime() - timetick);
 }
   //Chequea los resultados
-  for(i=0;i<N;i++){
+  for(i=0;i<N*N;i++){
 	check= check&&(C[i]==0.0);
   }   
 
