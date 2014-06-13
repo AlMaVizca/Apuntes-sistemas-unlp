@@ -54,7 +54,7 @@ int main(int argc,char*argv[]){
   for(i=0;i<N;i++){
 	for(j=0;j<N;j++){
 		for(k=0;k<N;k++){
-			C[i*N+j]=sqrt((pow(A[i*N+j]-total,2))*(pow(A[i*N+j]-total,2)));
+			C[i*N+j]=sqrt((pow(A[i*N+j]-total,2))*(pow(B[i*N+j]-total,2)));
 		}
 	}
   }
