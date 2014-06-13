@@ -70,7 +70,7 @@ int main(int argc,char*argv[]){
 }
   //Chequea los resultados
   for(i=0;i<N;i++){
-	check= check&&(C[i]==1.0);
+	check= check&&(C[i]==0.0);
   }   
 
   if(check){
