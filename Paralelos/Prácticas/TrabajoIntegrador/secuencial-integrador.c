@@ -29,8 +29,9 @@ int main(int argc,char*argv[]){
   for(i=0;i<N;i++){
 	for(j=0;j<N;j++){
 		A[i*N+j]= 1.0;
-		B[i*N+j]= 1.0;
-		C[i*N+j]= 1.0;
+		//Los valores para la matriz B deben ser cargados como una matriz transpuesta.
+		B[i+N*j]= 1.0;
+		C[i*N+j]= 0.0;
 		W[i*N+j]= 1.0;
     }
   }   
@@ -54,7 +55,7 @@ int main(int argc,char*argv[]){
   for(i=0;i<N;i++){
 	for(j=0;j<N;j++){
 		for(k=0;k<N;k++){
-			C[i*N+j]=sqrt((pow(A[i*N+j]-total,2))*(pow(B[i*N+j]-total,2)));
+			C[i*N+j]+=sqrt((pow(A[i*N+k]-total,2))*(pow(B[j*N+k]-total,2)));
 		}
 	}
   }
