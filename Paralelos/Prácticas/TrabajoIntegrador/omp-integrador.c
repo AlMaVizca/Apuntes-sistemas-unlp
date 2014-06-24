@@ -14,7 +14,7 @@ int main(int argc,char*argv[]){
     double *A,*B,*C,*W,*results, *Buffer;
     int i,j,k,N,tid;
  int check=1;
- double temp,total;
+ double temp,t_temp=0,total,t_total=0;
  double timetick;
 
  //Controla los argumentos al programa
@@ -59,49 +59,49 @@ int main(int argc,char*argv[]){
        W=(double*)malloc(sizeof(double)*size_chunk);
   }
  
-  MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-  MPI_Scatter (W, size_chunk, MPI_DOUBLE, W, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+ 
+
+ MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+ MPI_Scatter (W, size_chunk, MPI_DOUBLE, W, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 
-#pragma omp parallel default(none) private(i,j,total,temp,timetick,tid,chunk,B) shared(A,C,W,N)
+#pragma omp parallel default(none) firstprivate(chunk,N) private(i,j,timetick,tid) shared(A,W,temp,total)
 {
   tid= omp_get_thread_num();
   timetick = dwalltime();
 
   //Calcula la media ponderada
-  #pragma omp for private(i,j) schedule(static,1) nowait
+#pragma omp for reduction(+:temp,total) schedule(static,1) nowait 
   for(i=0;i<chunk;i++){
 	for(j=0;j<N;j++){
 	   temp += W[i*N+j];
 	   total += A[i*N+j] * W[i*N+j];
 	}
+
   }
 }
   
-   MPI_Allreduce(&temp, &temp, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
-   MPI_Allreduce(&total, &total, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+MPI_Allreduce(&temp, &temp, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+MPI_Allreduce(&total, &total, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
  
-   total/=temp;
+total/=temp;
 
-#pragma omp parallel default(none) private(i,j,total,temp,timetick,tid,chunk,B) shared(A,C,W,N)
+#pragma omp parallel default(none) firstprivate(total,chunk,N) private(i,j,k,tid,timetick) shared(A,B,Buffer)
 {
   tid= omp_get_thread_num();
   timetick = dwalltime();
   
   #pragma omp for private(i,j,k) schedule(static,1) nowait
   //Realiza la ecuacion general
-  for(i=0;i<N;i++){
+  for(i=0;i<chunk;i++){
 	for(j=0;j<N;j++){
 		for(k=0;k<N;k++){
-			C[i*N+j]+=sqrt((pow(A[i*N+k]-total,2))*(pow(B[j*N+k]-total,2)));
+			Buffer[i*N+j]+=sqrt((pow(A[i*N+k]-total,2))*(pow(B[j*N+k]-total,2)));
 		}
 	}
   }
  
-
-
-
-    printf("Tiempo en segundos para el thread %d: %f \n", tid,dwalltime() - timetick);
+  printf("Tiempo en segundos para el thread %d: %f \n", tid,dwalltime() - timetick);
 }
 
 MPI_Gather(Buffer, size_chunk, MPI_DOUBLE, C, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
@@ -121,6 +121,7 @@ MPI_Gather(Buffer, size_chunk, MPI_DOUBLE, C, size_chunk, MPI_DOUBLE, MANAGER, M
  free(B);
  free(Buffer);
  free(W);
+ MPI_Finalize();
  return(0);
 }
 
