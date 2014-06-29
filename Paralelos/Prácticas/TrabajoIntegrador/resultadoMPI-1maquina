@@ -1,0 +1,18 @@
+###paralelo 512
+Tiempo en segundos para el thread 1: 0.265706 
+Tiempo en segundos para el thread 0: 0.252123 
+Tiempo en segundos para el thread 3: 0.265816 
+Tiempo en segundos para el thread 2: 0.265937 
+Resultado correcto
+###paralelo 1024
+Tiempo en segundos para el thread 0: 2.004769 
+Tiempo en segundos para el thread 1: 2.035356 
+Tiempo en segundos para el thread 2: 2.038121 
+Tiempo en segundos para el thread 3: 2.038162 
+Resultado correcto
+###paralelo 2048
+Tiempo en segundos para el thread 1: 16.083250 
+Tiempo en segundos para el thread 0: 15.981415 
+Tiempo en segundos para el thread 2: 16.093349 
+Tiempo en segundos para el thread 3: 16.093430 
+Resultado correcto
