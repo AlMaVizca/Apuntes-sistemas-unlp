@@ -1,0 +1,18 @@
+###paralelo 2Maquinas 512
+Tiempo en segundos para el thread 1: 0.266833 
+Tiempo en segundos para el thread 2: 0.271062 
+Tiempo en segundos para el thread 3: 0.260746 
+Tiempo en segundos para el thread 0: 0.260866 
+Resultado correcto
+###paralelo 2Maquinas 1024
+Tiempo en segundos para el thread 1: 2.040802 
+Tiempo en segundos para el thread 0: 2.045045 
+Tiempo en segundos para el thread 2: 2.074858 
+Tiempo en segundos para el thread 3: 2.073597 
+Resultado correcto
+###paralelo 2Maquinas 2048
+Tiempo en segundos para el thread 1: 16.122035 
+Tiempo en segundos para el thread 0: 16.259661 
+Tiempo en segundos para el thread 2: 16.374053 
+Tiempo en segundos para el thread 3: 16.373663 
+Resultado correcto
