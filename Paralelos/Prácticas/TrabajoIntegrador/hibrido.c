@@ -6,7 +6,7 @@
 
 #define MANAGER 0
 
-/* Time in seconds from some point in the past */
+/* Time in seconds from some point in the past  */
 double dwalltime();
 
 
