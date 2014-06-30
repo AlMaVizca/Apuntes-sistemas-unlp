@@ -1,0 +1,12 @@
+###paralelo 2Maquinas 512
+Tiempo total en segundos: 0.698578 
+Tiempo de comunicacion en segundos: 0.511712 
+Resultado correcto
+###paralelo 2Maquinas 1024
+Tiempo total en segundos: 3.426580 
+Tiempo de comunicacion en segundos: 2.128624 
+Resultado correcto
+###paralelo 2Maquinas 2048
+Tiempo total en segundos: 18.815196 
+Tiempo de comunicacion en segundos: 8.605239 
+Resultado correcto
