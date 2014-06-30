@@ -89,6 +89,7 @@ communicationtick = dwalltime();
   MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
   MPI_Bcast(B, N*N, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
+communication += dwalltime() - communicationtick;
 
 
 total/=temp;
