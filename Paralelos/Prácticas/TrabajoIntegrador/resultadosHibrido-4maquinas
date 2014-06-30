@@ -1,0 +1,12 @@
+###paralelo 4Maquinas 512
+Tiempo total en segundos: 0.166292 
+Tiempo de comunicacion en segundos: 0.074563 
+Resultado correcto
+###paralelo 4Maquinas 1024
+Tiempo total en segundos: 0.955915 
+Tiempo de comunicacion en segundos: 0.292955 
+Resultado correcto
+###paralelo 4Maquinas 2048
+Tiempo total en segundos: 6.373748 
+Tiempo de comunicacion en segundos: 1.173768 
+Resultado correcto
