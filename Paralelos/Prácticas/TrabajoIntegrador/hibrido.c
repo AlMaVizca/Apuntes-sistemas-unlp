@@ -11,11 +11,11 @@ double dwalltime();
 
 
 int main(int argc,char*argv[]){
-    double *A,*B,*C,*W,*results, *Buffer;
-    int i,j,k,N,tid;
+ double *A,*B,*C,*W,*Buffer;
+ int i,j,k,N;
  int check=1;
- double temp,t_temp=0,total,t_total=0;
- double timetick;
+ double temp,total;
+ double totaltick, communication=0, communicationtick;
 
  //Controla los argumentos al programa
   if (argc < 3){
@@ -31,7 +31,6 @@ int main(int argc,char*argv[]){
  MPI_Init(&argc, &argv);
  MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
  MPI_Comm_rank(MPI_COMM_WORLD, &worker_id);
- MPI_Status status;
  chunk=N/n_proc;
  size_chunk=chunk*N;
 
@@ -59,17 +58,18 @@ int main(int argc,char*argv[]){
        W=(double*)malloc(sizeof(double)*size_chunk);
   }
  
- 
+
+
+ totaltick = dwalltime();
 
  MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
  MPI_Scatter (W, size_chunk, MPI_DOUBLE, W, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+ 
+ communication += dwalltime() - totaltick;
+ 
 
-
-#pragma omp parallel default(none) firstprivate(chunk,N) private(i,j,timetick,tid) shared(A,W,temp,total)
+#pragma omp parallel default(none) firstprivate(chunk,N,totaltick) private(i,j) shared(A,W,temp,total)
 {
-  tid= omp_get_thread_num();
-  timetick = dwalltime();
-
   //Calcula la media ponderada
 #pragma omp for reduction(+:temp,total) schedule(static,1) nowait 
   for(i=0;i<chunk;i++){
@@ -77,22 +77,23 @@ int main(int argc,char*argv[]){
 	   temp += W[i*N+j];
 	   total += A[i*N+j] * W[i*N+j];
 	}
-
   }
 }
-  
+
+communicationtick = dwalltime();
+
 MPI_Allreduce(&temp, &temp, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 MPI_Allreduce(&total, &total, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
+MPI_Bcast(B, N*N, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
+
+communication += dwalltime() - communicationtick;
  
 total/=temp;
-
-#pragma omp parallel default(none) firstprivate(total,chunk,N) private(i,j,k,tid,timetick) shared(A,B,Buffer)
+//Realiza la ecuacion general
+#pragma omp parallel default(none) firstprivate(total,chunk,N) private(i,j,k) shared(A,B,Buffer)
 {
-  tid= omp_get_thread_num();
-  timetick = dwalltime();
-  
   #pragma omp for private(i,j,k) schedule(static,1) nowait
-  //Realiza la ecuacion general
   for(i=0;i<chunk;i++){
 	for(j=0;j<N;j++){
 		for(k=0;k<N;k++){
@@ -100,17 +101,23 @@ total/=temp;
 		}
 	}
   }
- 
-  printf("Tiempo en segundos para el thread %d: %f \n", tid,dwalltime() - timetick);
 }
+
+communicationtick = dwalltime();
 
 MPI_Gather(Buffer, size_chunk, MPI_DOUBLE, C, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
-  if(worker_id == MANAGER){
+communication += dwalltime() - communicationtick;
+
   //Chequea los resultados
+  if(worker_id == MANAGER){
   for(i=0;i<N*N;i++)
 	check= check&&(C[i]==0.0);
   if(check){
+   totaltick = dwalltime() - totaltick;
+   printf("Tiempo total en segundos: %f \n", totaltick);
+   printf("Tiempo en segundos de comunicacion: %f \n", communication);
+   printf("Tiempo en segundos de procesamiento: %f \n", totaltick - communication);
    printf("Resultado correcto\n");
   }else{
    printf("Resultado erroneo\n");

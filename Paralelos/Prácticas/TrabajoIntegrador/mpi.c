@@ -4,16 +4,18 @@
 #include<math.h>
 #define MANAGER 0
 
+
+
 /* Time in seconds from some point in the past */
 double dwalltime();
 
 
 int main(int argc,char*argv[]){
-    double *A,*B,*C,*W,*results,*Buffer;
+ double *A,*B,*C,*W,*Buffer;
  int i,j,k,N;
  int check=1;
  double temp,total;
- double timetick;
+ double totaltick, communication=0, communicationtick;
 
  //Controla los argumentos al programa
   if (argc < 2){
@@ -21,11 +23,15 @@ int main(int argc,char*argv[]){
    return 0;
   }
    N=atoi(argv[1]);
-   int worker_id, n_proc, chunk, size_chunk;
+
+
+
+
+
+ int worker_id, n_proc, chunk, size_chunk;
  MPI_Init(&argc, &argv);
  MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
  MPI_Comm_rank(MPI_COMM_WORLD, &worker_id);
- MPI_Status status;
  chunk=N/n_proc;
  size_chunk=chunk*N;
 
@@ -55,39 +61,51 @@ int main(int argc,char*argv[]){
   }
 
  
-  timetick = dwalltime();
+ totaltick = dwalltime();
 
-  //Calcula la media ponderada
  MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
  MPI_Scatter (W, size_chunk, MPI_DOUBLE, W, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-  for(i=0;i<chunk;i++){
-	for(j=0;j<N;j++){
+ communication += dwalltime() - totaltick;
+
+
+
+ 
+
+
+
+ for(i=0;i<chunk;i++){
+      for(j=0;j<N;j++){
 	   temp += W[i*chunk+j];
 	   total += A[i*chunk+j] * W[i*chunk+j];
 	}
   }
 
+
+communicationtick = dwalltime();
+
   MPI_Allreduce(&temp, &temp, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
   MPI_Allreduce(&total, &total, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+  MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
+  MPI_Bcast(B, N*N, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
-  total/=temp;
 
- MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
- MPI_Bcast(B, N*N, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
-
+total/=temp;
   //Realiza la ecuacion general
   for(i=0;i<chunk;i++){
       for(j=0;j<N;j++)
 	    for(k=0;k<N;k++)
-	    Buffer[i*chunk+j]=sqrt((pow(A[i*chunk+k]-total,2))*(pow(B[j*N+k]-total,2)));
+	    Buffer[i*chunk+j]+=sqrt((pow(A[i*chunk+k]-total,2))*(pow(B[j*N+k]-total,2)));
   }
+
+communicationtick = dwalltime();
 
  MPI_Gather(Buffer, size_chunk, MPI_DOUBLE, C, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
+communication += dwalltime() - communicationtick;
 
-    printf("Tiempo en segundos para el thread %d: %f \n", worker_id,dwalltime() - timetick);
+
 
   //Chequea los resultados
   if(worker_id == MANAGER){
@@ -96,6 +114,10 @@ int main(int argc,char*argv[]){
 	      check= check&&(C[i*N+j]==0.0);
 	  }
   if(check){
+   totaltick = dwalltime() - totaltick;
+   printf("Tiempo total en segundos: %f \n", totaltick);
+   printf("Tiempo en segundos de comunicacion: %f \n", communication);
+   printf("Tiempo en segundos de procesamiento: %f \n", totaltick - communication);
    printf("Resultado correcto\n");
   }else{
    printf("Resultado erroneo\n");
