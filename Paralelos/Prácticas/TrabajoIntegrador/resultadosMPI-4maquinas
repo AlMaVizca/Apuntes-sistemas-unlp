@@ -1,18 +1,12 @@
 ###paralelo 4Maquinas 512
-Tiempo en segundos para el thread 1: 0.268852 
-Tiempo en segundos para el thread 2: 0.268904 
-Tiempo en segundos para el thread 0: 0.258082 
-Tiempo en segundos para el thread 3: 0.269048 
+Tiempo total en segundos: 0.203534 
+Tiempo de comunicacion en segundos: 0.069245 
 Resultado correcto
 ###paralelo 4Maquinas 1024
-Tiempo en segundos para el thread 0: 2.049975 
-Tiempo en segundos para el thread 1: 2.083079 
-Tiempo en segundos para el thread 2: 2.083658 
-Tiempo en segundos para el thread 3: 2.083710 
+Tiempo total en segundos: 1.138097 
+Tiempo de comunicacion en segundos: 0.472953 
 Resultado correcto
 ###paralelo 4Maquinas 2048
-Tiempo en segundos para el thread 0: 16.349373 
-Tiempo en segundos para el thread 1: 16.463275 
-Tiempo en segundos para el thread 2: 16.464041 
-Tiempo en segundos para el thread 3: 16.464118 
+Tiempo total en segundos: 7.129267 
+Tiempo de comunicacion en segundos: 1.910655 
 Resultado correcto
