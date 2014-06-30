@@ -11,11 +11,11 @@ double dwalltime();
 
 
 int main(int argc,char*argv[]){
- double *A,*B,*C,*W,*Buffer;
+ double *A,*B,*C,*W,*Buffer,*results;
  int i,j,k,N;
  int check=1;
  double temp,total;
- double totaltick, communication=0, communicationtick;
+ double totaltick, communicationtick;
 
  //Controla los argumentos al programa
   if (argc < 3){
@@ -36,6 +36,10 @@ int main(int argc,char*argv[]){
 
   B=(double*)malloc(sizeof(double)*N*N);
   Buffer=(double*)malloc(sizeof(double)*size_chunk);
+  
+  for(i=0;i<size_chunk;i++) Buffer[i]=0;
+  
+  results=(double*)malloc(sizeof(double)*3);
 
  if(worker_id == MANAGER){
   //Aloca memoria para las matrices
@@ -65,7 +69,7 @@ int main(int argc,char*argv[]){
  MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
  MPI_Scatter (W, size_chunk, MPI_DOUBLE, W, size_chunk, MPI_DOUBLE, 0, MPI_COMM_WORLD);
  
- communication += dwalltime() - totaltick;
+ results[0]=dwalltime() - totaltick;
  
 
 #pragma omp parallel default(none) firstprivate(chunk,N,totaltick) private(i,j) shared(A,W,temp,total)
@@ -87,7 +91,7 @@ MPI_Allreduce(&total, &total, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 MPI_Scatter (A, size_chunk, MPI_DOUBLE, A, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 MPI_Bcast(B, N*N, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
-communication += dwalltime() - communicationtick;
+ results[1]=dwalltime() - communicationtick;
  
 total/=temp;
 //Realiza la ecuacion general
@@ -107,17 +111,23 @@ communicationtick = dwalltime();
 
 MPI_Gather(Buffer, size_chunk, MPI_DOUBLE, C, size_chunk, MPI_DOUBLE, MANAGER, MPI_COMM_WORLD);
 
-communication += dwalltime() - communicationtick;
+ results[2]=dwalltime() - communicationtick;
+
+ totaltick = dwalltime() - totaltick;
+
+
+ for(i=0;i<3;i++)
+MPI_Allreduce(results+i, results+i, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+
 
   //Chequea los resultados
   if(worker_id == MANAGER){
   for(i=0;i<N*N;i++)
 	check= check&&(C[i]==0.0);
   if(check){
-   totaltick = dwalltime() - totaltick;
    printf("Tiempo total en segundos: %f \n", totaltick);
-   printf("Tiempo en segundos de comunicacion: %f \n", communication);
-   printf("Tiempo en segundos de procesamiento: %f \n", totaltick - communication);
+   for(i=0,communicationtick=0;i<3;i++) communicationtick+=results[i];
+   printf("Tiempo de comunicacion en segundos: %f \n", communicationtick);
    printf("Resultado correcto\n");
   }else{
    printf("Resultado erroneo\n");
@@ -127,6 +137,7 @@ communication += dwalltime() - communicationtick;
  free(A);
  free(B);
  free(Buffer);
+ free(results);
  free(W);
  MPI_Finalize();
  return(0);
