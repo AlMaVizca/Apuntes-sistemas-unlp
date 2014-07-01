@@ -1,0 +1,41 @@
+En el siguiente informe presentaremos tres diferentes implementaciones para resolver la 
+ecuación matricial que se muestra en la siguiente figura.
+
+( INSERTAR FIGURA )
+
+En las qué tendremos, una solución secuencial, una implementación paralela utilizando MPI 
+y finalmente una implementación híbrida, usando MPI y OpenMP.
+La idea es explicar las diferentes soluciones haciendo hincapié en la estrategia utilizada
+y mostrando la información cuantitativa de los resultados obtenidos en las máquinas provista
+por la cátedra, es decir que estas implementaciones se estarían ejecutando en cluseter quadcores homogéneo.
+Los casos de pruebas se han hecho con tamaños de matrices que sean potencias de dos. 
+En este caso matrices de tamaño N, de 512, 1024 y 2048. Se realizaron pruebas paralelas para 
+8 procesadores (2 máquinas) y 16 procesadores (4 máquinas).
+
+Secuencial
+
+La idea del algoritmo es primero obtener el valor de la media aritmética ponderada para 
+luego realizar el cálculo de la ecuación general. En la primer parte tendremos que recorrer 
+las matrices A y W por completo para poder obtener el resultado correspondiente. En la segunda
+ecuación pondremos dentro de la matriz C el valor correspondiente al resultado de los valores 
+aritméticos resultantes y usando de por medio el valor obtenido en la primer ecuación ( la media aritmética ponderada ).
+
+MPI
+
+Cabe aclara que siempre se ha utilizado la misma estrategia, acá en MPI lo que hemos 
+añadido es el uso de la biblioteca de mensajes que nos provee la misma. Hemos utilizado
+las diferentes funciones que tenemos de MPI, un máster que divide el trabajo entre los 
+procesos, junta los resultados parciales y finalmente una vez que todos han terminado 
+de trabajar, retornar al master los resultados parcialesm juntándolos y haciendo el 
+chekeo correspondiente del resultado.
+
+Híbrido - MPI-OpenMP
+
+En este tipo de implementación se ha utilizado la biblioteca de MPI para utilizar sus 
+funciones y dividiendo el cómputo dentro de cada proceso mediante OpenMP.
+Como dijimos anteriormente siempre se sigió la misma estrategia, lo que hemos añadido 
+aquí, además del paralelismo de procesos es el uso de la librería OpemMP y mediante ésta, 
+paralelizar en threads el proceso de multiplicación, ya que en la estructura de control for,
+aprovechamos las diferentes iteraciones que se pueden hacer en simultáneo.
+
+
